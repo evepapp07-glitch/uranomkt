@@ -255,8 +255,8 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
 @media(max-width:1000px){
   nav{padding:1rem 1.5rem}
   .nav-links{display:none}
-  section{padding:5rem 1.5rem}
-  .nosotros-inner{grid-template-columns:1fr;gap:3rem}
+  section{padding:4rem 1.5rem}
+  .nosotros-inner{grid-template-columns:1fr;gap:2.5rem}
   .servicios-grid{grid-template-columns:1fr 1fr}
   .proceso-grid{grid-template-columns:1fr 1fr}
   .planes-grid{grid-template-columns:1fr}
@@ -264,20 +264,34 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
   .form-row{grid-template-columns:1fr}
   .hero-stats{gap:2rem}
   footer{flex-direction:column;gap:1.5rem;text-align:center}
+  .footer-links{flex-wrap:wrap;justify-content:center;gap:1rem}
   .divider{margin:0 1.5rem;width:calc(100% - 3rem)}
-  .test-teaser-inner{flex-direction:column;align-items:flex-start;gap:1.5rem}
-  .test-teaser-cta{text-align:left}
   .diferencial-band{padding:3rem 1.5rem}
   .diferencial-inner{flex-direction:column;gap:1.5rem}
   .diferencial-cta{width:100%}
   .diferencial-cta .btn-blanco{width:100%;text-align:center}
   .proceso-header{flex-direction:column;align-items:flex-start}
+  .test-beneficios{grid-template-columns:1fr 1fr}
 }
 @media(max-width:600px){
+  nav{padding:.85rem 1rem}
+  nav img{height:34px !important}
+  nav>div:last-child .nav-cta{font-size:.65rem;padding:.4rem .85rem;letter-spacing:.08em}
+  nav>div:last-child svg:first-of-type{display:none}
+  section{padding:3.5rem 1rem}
   .servicios-grid{grid-template-columns:1fr}
-  .nosotros-valores{grid-template-columns:1fr}
+  .nosotros-inner{gap:2rem}
   .proceso-grid{grid-template-columns:1fr}
-  .hero-stats{flex-direction:column;gap:1.5rem}
+  .hero-stats{flex-direction:column;gap:1.25rem}
+  .hero h1{font-size:clamp(2.2rem,10vw,3.5rem)}
+  .planes-grid{grid-template-columns:1fr}
+  .test-beneficios{grid-template-columns:1fr 1fr}
+  .test-container{margin:0}
+  .test-body{padding:1.5rem}
+  .result-btns{flex-direction:column}
+  .result-btns .btn-primary,.result-btns .btn-ghost{width:100%;text-align:center}
+  footer{padding:2rem 1rem}
+  .footer-links{flex-direction:column;align-items:center;gap:.75rem}
 }
 </style>
 </head>
