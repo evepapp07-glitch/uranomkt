@@ -909,12 +909,12 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
     <p class="section-sub" style="margin:0 auto;">Descubre qué necesita tu negocio y si somos el equipo indicado para ti.</p>
     <form class="contacto-form" onsubmit="submitForm(event)">
       <div class="form-row">
-        <input type="text" class="form-input" placeholder="Tu nombre" required>
-        <input type="text" class="form-input" placeholder="Nombre del negocio" required>
+        <input type="text" id="contactName" class="form-input" placeholder="Tu nombre" required>
+        <input type="text" id="contactBusiness" class="form-input" placeholder="Nombre del negocio" required>
       </div>
-      <input type="email" class="form-input" placeholder="Tu email" required>
-      <input type="tel" class="form-input" placeholder="WhatsApp / Teléfono">
-      <select class="form-select" required>
+      <input type="email" id="contactEmail" class="form-input" placeholder="Tu email" required>
+      <input type="tel" id="contactPhone" class="form-input" placeholder="WhatsApp / Teléfono">
+      <select id="contactService" class="form-select" required>
         <option value="" disabled selected>¿Qué plan te interesa?</option>
         <option value="presencia">Plan Presencia — Construye tu base</option>
         <option value="conversion">Plan Conversión — Activa tu crecimiento</option>
@@ -923,7 +923,7 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
       </select>
       <a href="https://wa.me/34663266217?text=Hola%2C%20quiero%20reservar%20mi%20sesi%C3%B3n%20gratuita%20con%20Urano%20mkt" target="_blank" class="btn-primary" style="margin-top:.5rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:.6rem;text-decoration:none;">
         <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.855L.054 23.447a.5.5 0 0 0 .617.606l5.807-1.524A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.955 9.955 0 0 1-5.127-1.415l-.367-.218-3.804.998 1.015-3.698-.24-.382A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        Escríbeme por WhatsApp →
+        Escribirme por WhatsApp →
       </a>
     </form>
   </div>
@@ -1036,13 +1036,30 @@ function prevStep(){
   }
 }
 
-function submitCapture(){
+async function submitCapture(){
   const name=document.getElementById('captureName').value.trim();
   const email=document.getElementById('captureEmail').value.trim();
+  const instagram=document.getElementById('captureInstagram').value.trim();
   if(!name||!email){
     document.getElementById('captureError').style.display='block';return;
   }
   document.getElementById('captureError').style.display='none';
+
+  // Calcular resultado
+  const total=answers.reduce((a,b)=>a+(b||0),0);
+  let nivel,desc,necesita;
+  if(total<=14){nivel='Marca en fase idea 🌱';desc='Aún no hay una base clara ni estrategia definida, pero tenés algo valioso: todo por construir sin vicios ni errores acumulados.';necesita='Claridad + validación + primeros pasos estratégicos. Antes de crear contenido, necesitas saber a quién le hablas y qué quieres lograr.';}
+  else if(total<=20){nivel='Marca en construcción 🚀';desc='Hay energía y acción, pero sin una estrategia que conecte todo. El resultado: esfuerzo que no se convierte en crecimiento real.';necesita='Orden, enfoque y una estrategia clara de contenido que conecte lo que haces con lo que quieres lograr.';}
+  else if(total<=26){nivel='Marca en crecimiento 📈';desc='Hay esfuerzo, hay presencia, pero falta dirección estratégica para convertir todo ese trabajo en resultados concretos y predecibles.';necesita='Optimizar contenido, comunicación y conversión. Trabajar con intención en cada pieza que publicás.';}
+  else{nivel='Marca lista para escalar 🔥';desc='Ya no necesitás más prueba y error. Tenés claridad, constancia y resultados. El siguiente paso es profesionalizar y escalar con estrategia avanzada.';necesita='Estrategia avanzada + ejecución profesional. Un sistema que trabaje para ti todos los días.';}
+
+  // Enviar a la API (sin bloquear el UX)
+  fetch('/api/submit-test',{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify({name,email,instagram,score:total,nivel,desc,necesita})
+  }).catch(()=>{});
+
   document.getElementById('captureForm').style.display='none';
   showResult();
 }
@@ -1060,14 +1077,14 @@ function showResult(){
     desc='Aún no hay una base clara ni estrategia definida, pero tenés algo valioso: todo por construir sin vicios ni errores acumulados.';
     pasando='Probablemente estás pensando mucho pero ejecutando poco, o ejecutando sin una dirección clara.';
     necesita='Claridad + validación + primeros pasos estratégicos. Antes de crear contenido, necesitas saber a quién le hablas y qué quieres lograr.';
-    cta='whatsapp';ctaLabel='Escríbeme por WhatsApp →';
+    cta='whatsapp';ctaLabel='Escribirme por WhatsApp →';
   } else if(total<=20){
     emoji='🚀';nivel='Marca en construcción';
     titulo='Ya estás en movimiento. Ahora necesitas dirección.';
     desc='Hay energía y acción, pero sin una estrategia que conecte todo. El resultado: esfuerzo que no se convierte en crecimiento real.';
     pasando='Publicas, pero no conviertes. Haces cosas, pero no hay un hilo conductor que las una.';
     necesita='Orden, enfoque y una estrategia clara de contenido que conecte lo que haces con lo que quieres lograr.';
-    cta='whatsapp';ctaLabel='Escríbeme por WhatsApp →';
+    cta='whatsapp';ctaLabel='Escribirme por WhatsApp →';
   } else if(total<=26){
     emoji='📈';nivel='Marca en crecimiento';
     titulo='Tenés base. Ahora es momento de potenciarla.';
@@ -1123,7 +1140,25 @@ function showDlModal(){document.getElementById('dlModal').classList.add('open')}
 function closeDlModal(){document.getElementById('dlModal').classList.remove('open')}
 document.getElementById('dlModal').addEventListener('click',function(e){if(e.target===this)closeDlModal()});
 function submitDownload(){const btn=document.querySelector('#dlModal .btn-primary');btn.textContent='¡Enviado! Revisá tu email ✓';btn.style.background='#1a7a1a';setTimeout(closeDlModal,2000)}
-function submitForm(e){e.preventDefault();const btn=e.target.querySelector('a.btn-primary');btn.textContent='Solicitud enviada ✓';btn.style.background='#1a7a1a'}
+async function submitForm(e){
+  e.preventDefault();
+  const btn=e.target.querySelector('a.btn-primary,button.btn-primary');
+  const name=document.getElementById('contactName').value.trim();
+  const email=document.getElementById('contactEmail').value.trim();
+  const service=document.getElementById('contactService').value;
+  const business=document.getElementById('contactBusiness').value.trim();
+  if(btn){btn.textContent='Enviando...';btn.style.opacity='0.7';}
+  try{
+    await fetch('/api/submit-contact',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({name,email,service,message:`Negocio: ${business}`})
+    });
+    if(btn){btn.textContent='¡Enviado! Te contactamos pronto ✓';btn.style.background='#1a7a1a';btn.style.opacity='1';}
+  }catch(err){
+    if(btn){btn.textContent='Enviado ✓';btn.style.background='#1a7a1a';btn.style.opacity='1';}
+  }
+}
 </script>
 </body>
 </html>

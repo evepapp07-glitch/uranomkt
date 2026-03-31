@@ -1,0 +1,9 @@
+{
+  "name": "urano-mkt",
+  "version": "1.0.0",
+  "private": true,
+  "dependencies": {
+    "resend": "^3.2.0",
+    "@notionhq/client": "^2.2.15"
+  }
+}
