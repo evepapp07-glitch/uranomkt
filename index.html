@@ -142,7 +142,16 @@ section{padding:7rem 4rem;position:relative}
 .plan-btn.solid{background:var(--fucsia);color:#fff}
 .plan-btn.solid:hover{background:#d4007a}
 
-/* ── TEST ── */
+/* ── FAQ ── */
+.faq-item{border-bottom:1px solid var(--gris);overflow:hidden}
+.faq-question{width:100%;background:transparent;border:none;padding:1.5rem 0;display:flex;justify-content:space-between;align-items:center;cursor:pointer;text-align:left;gap:1rem;transition:color .2s}
+.faq-question-text{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.95rem;color:var(--blanco);line-height:1.4}
+.faq-question:hover .faq-question-text{color:var(--fucsia)}
+.faq-icon{font-size:1.25rem;color:var(--fucsia);flex-shrink:0;transition:transform .3s;font-weight:300}
+.faq-item.open .faq-icon{transform:rotate(45deg)}
+.faq-answer{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.faq-answer-inner{padding:0 0 1.5rem;font-size:.88rem;color:var(--texto2);line-height:1.8}
+.faq-item.open .faq-answer{max-height:300px}
 #test{background:var(--negro)}
 .test-beneficios{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--gris)}
 .test-beneficio-card{background:var(--negro);padding:2rem 1.75rem;position:relative;overflow:hidden;transition:background .3s}
@@ -277,14 +286,14 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
 <!-- ═══ NAV ═══ -->
 <nav id="mainNav">
   <a href="index.html" style="display:flex;align-items:center;text-decoration:none;">
-    <img src="LOGO_URANO_pdf.svg" alt="Urano mkt" style="height:44px;width:auto;">
+    <img src="logo-urano.png" alt="Urano mkt" style="height:44px;width:auto;">
   </a>
   <div class="nav-links">
     <a href="#nosotros">Nosotros</a>
     <a href="#como-trabajamos">Cómo trabajamos</a>
     <a href="#planes">Planes</a>
     <a href="#test">Test</a>
-    <a href="#recursos">Recursos</a>
+    
     <a href="#contacto">Contacto</a>
   </div>
   <div style="display:flex;align-items:center;gap:.75rem;">
@@ -344,7 +353,7 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
     <!-- LEFT: texto -->
     <div class="reveal">
       <div class="section-tag">Quiénes somos</div>
-      <h2 class="section-title">HOLA!! Construimos la presencia digital de marcas en Barcelona.</h2>
+      <h2 class="section-title">Construimos la presencia digital de marcas en Barcelona.</h2>
 
       <blockquote class="nosotros-quote">
         "Si no apareces cuando te buscan, <em>pierdes ventas.</em>"
@@ -365,11 +374,6 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
         Somos el equipo que se sienta contigo, va a tu local, entiende tu negocio desde adentro y construye el sistema de visibilidad que necesitas — para que tu marca trabaje todos los días, mientras tú te enfocas en lo tuyo.
       </p>
 
-      <!-- VALOR AGREGADO -->
-      <div style="margin-top:2rem;padding:1.25rem 1.5rem;border-left:3px solid var(--fucsia);background:rgba(175,0,97,.06);">
-        <div style="font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fucsia);margin-bottom:.5rem;font-weight:600;">Nuestro diferencial</div>
-        <p style="font-size:.9rem;color:var(--blanco);line-height:1.7;font-family:'Montserrat',sans-serif;font-weight:600;">No trabajamos a distancia. Vamos a tu negocio, lo vivimos contigo y construimos desde adentro.</p>
-      </div>
     </div>
 
     <!-- RIGHT: servicios grid -->
@@ -529,24 +533,31 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
     <h2 class="section-title">Elige cómo quieres<br>crecer.</h2>
     <p class="section-sub">Tres niveles diseñados para donde estás hoy — y hacia donde quieres llegar. Sin permanencias ocultas. Sin sorpresas.</p>
   </div>
+
+  <!-- Aviso adaptación -->
+  <div style="max-width:1200px;margin:0 auto 2.5rem;padding:1.1rem 1.5rem;border:1px solid rgba(175,0,97,.3);background:var(--fucsia-dim);display:flex;align-items:flex-start;gap:.85rem;" class="reveal">
+    <span style="font-size:1.1rem;flex-shrink:0;margin-top:.1rem;">💡</span>
+    <p style="font-size:.85rem;color:var(--texto);line-height:1.7;"><strong style="color:var(--blanco);font-weight:600;">Estos planes son marcos de trabajo, no paquetes cerrados.</strong> Las herramientas y estrategias se adaptan a las necesidades reales de cada marca.</p>
+  </div>
+
   <div class="planes-grid reveal">
 
     <!-- PLAN 1 -->
     <div class="plan-card">
       <div class="plan-nivel">01 — Plan Presencia</div>
       <div class="plan-nombre">Construye<br>tu base.</div>
-      <div class="plan-desc">Empieza a ser visible con estrategia real. Contenido constante, identidad clara y resultados desde el primer mes.</div>
+      <div class="plan-desc">El punto de partida para marcas que quieren existir en digital con estrategia real — no improvisar.</div>
       <div class="plan-divider" style="height:1px;background:var(--gris);margin:1.5rem 0;"></div>
       <div class="plan-items">
-        <div class="plan-item">Auditoría inicial de marca y competencia</div>
-        <div class="plan-item">Estrategia a medida (sin plantillas)</div>
-        <div class="plan-item">4 Reels/mes grabados y editados</div>
-        <div class="plan-item">6 posts estáticos (diseño + copy)</div>
-        <div class="plan-item">Calendario editorial mensual</div>
-        <div class="plan-item">Optimización de perfil de Instagram</div>
-        <div class="plan-item">Reporte mensual con métricas reales</div>
+        <div class="plan-item"><span style="flex-shrink:0;margin-right:.25rem;">📞</span>Llamada de onboarding — entendemos tu marca antes de crear nada</div>
+        <div class="plan-item"><span style="flex-shrink:0;margin-right:.25rem;">🎯</span><strong style="color:var(--blanco);font-weight:500;">Estrategia a medida</strong> — sin plantillas</div>
+        <div class="plan-item"><span style="flex-shrink:0;margin-right:.25rem;">✏️</span>Copies y guiones adaptados a tu voz</div>
+        <div class="plan-item"><span style="flex-shrink:0;margin-right:.25rem;">🎨</span>Diseño de posts y stories</div>
+        <div class="plan-item"><span style="flex-shrink:0;margin-right:.25rem;">⚙️</span>Optimización de perfil de Instagram</div>
+        <div class="plan-item"><span style="flex-shrink:0;margin-right:.25rem;">📊</span>Reporte mensual con métricas reales</div>
       </div>
-      <button class="plan-btn outline" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Consultar →</button>
+      <div style="font-size:.78rem;color:var(--texto3);line-height:1.6;margin-bottom:1.75rem;padding:.75rem 1rem;border-left:2px solid var(--gris2);font-style:italic;">Las piezas de contenido y formatos se definen según la estrategia de cada marca.</div>
+      <button class="plan-btn outline" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Ver detalles →</button>
     </div>
 
     <!-- PLAN 2 -->
@@ -554,35 +565,34 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
       <div class="plan-featured-badge">Más elegido</div>
       <div class="plan-nivel">02 — Plan Conversión</div>
       <div class="plan-nombre">Activa tu<br>crecimiento.</div>
-      <div class="plan-desc">Convierte seguidores en clientes con contenido, automatizaciones y publicidad que trabajan juntos.</div>
+      <div class="plan-desc">Para marcas que ya tienen presencia y quieren que sus redes generen clientes de verdad.</div>
       <div class="plan-divider" style="height:1px;background:rgba(175,0,97,.3);margin:1.5rem 0;"></div>
       <div class="plan-items">
-        <div class="plan-item">Todo lo del Plan Presencia</div>
-        <div class="plan-item">8 Reels/mes + Stories semanales</div>
-        <div class="plan-item">Automatización de Instagram (DM automation)</div>
-        <div class="plan-item">Gestión de comunidad (comentarios + DMs lun–vie)</div>
-        <div class="plan-item">1 campaña Meta Ads incluida</div>
-        <div class="plan-item">Sesión estratégica mensual (45 min)</div>
-        <div class="plan-item">Reporte quincenal con análisis de resultados</div>
+        <div class="plan-item"><span style="flex-shrink:0;margin-right:.25rem;">✓</span>Todo lo del Plan Presencia</div>
+        <div class="plan-item"><span style="flex-shrink:0;margin-right:.25rem;">🎬</span><strong style="color:var(--blanco);font-weight:500;">Reels y TikToks</strong> — un vídeo, dos plataformas</div>
+        <div class="plan-item"><span style="flex-shrink:0;margin-right:.25rem;">💰</span><strong style="color:var(--blanco);font-weight:500;">1 campaña Meta Ads</strong> gestionada y optimizada</div>
+        <div class="plan-item"><span style="flex-shrink:0;margin-right:.25rem;">🧠</span>Sesión estratégica mensual (45 min)</div>
+        <div class="plan-item"><span style="flex-shrink:0;margin-right:.25rem;">📊</span>Reporte quincenal con análisis de resultados</div>
       </div>
-      <button class="plan-btn solid" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Consultar →</button>
+      <div style="font-size:.78rem;color:var(--texto2);line-height:1.6;margin-bottom:1.75rem;padding:.75rem 1rem;border-left:2px solid rgba(175,0,97,.4);font-style:italic;">Los Reels, el presupuesto de ads y los formatos se adaptan según los objetivos de cada mes.</div>
+      <button class="plan-btn solid" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Ver detalles →</button>
     </div>
 
     <!-- PLAN 3 -->
     <div class="plan-card">
       <div class="plan-nivel">03 — Plan Escala</div>
       <div class="plan-nombre">Domina tu<br>mercado.</div>
-      <div class="plan-desc">Para marcas con base sólida que quieren acelerar sin perder el control ni la identidad.</div>
+      <div class="plan-desc">Para marcas con base sólida que quieren acelerar con un sistema que trabaja solo.</div>
       <div class="plan-divider" style="height:1px;background:var(--gris);margin:1.5rem 0;"></div>
       <div class="plan-items">
-        <div class="plan-item">Todo lo del Plan Conversión</div>
-        <div class="plan-item">2 campañas Meta Ads + optimización semanal</div>
-        <div class="plan-item">Automatizaciones avanzadas (secuencias + captación de leads)</div>
-        <div class="plan-item">Estrategia trimestral de contenido</div>
-        <div class="plan-item">Análisis de competencia mensual</div>
-        <div class="plan-item">Sesión estratégica quincenal (60 min)</div>
+        <div class="plan-item"><span style="flex-shrink:0;margin-right:.25rem;">✓</span>Todo lo del Plan Conversión</div>
+        <div class="plan-item"><span style="flex-shrink:0;margin-right:.25rem;">🚀</span><strong style="color:var(--blanco);font-weight:500;">2 campañas Meta Ads</strong> + optimización semanal</div>
+        <div class="plan-item"><span style="flex-shrink:0;margin-right:.25rem;">🤖</span><strong style="color:var(--blanco);font-weight:500;">Automatizaciones avanzadas</strong> — secuencias + captación</div>
+        <div class="plan-item"><span style="flex-shrink:0;margin-right:.25rem;">📅</span>Estrategia trimestral</div>
+        <div class="plan-item"><span style="flex-shrink:0;margin-right:.25rem;">🧠</span>Sesión estratégica quincenal (60 min)</div>
       </div>
-      <button class="plan-btn outline" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Consultar →</button>
+      <div style="font-size:.78rem;color:var(--texto3);line-height:1.6;margin-bottom:1.75rem;padding:.75rem 1rem;border-left:2px solid var(--gris2);font-style:italic;">Las automatizaciones y campañas se diseñan para el embudo de conversión de cada marca.</div>
+      <button class="plan-btn outline" onclick="document.getElementById('contacto').scrollIntoView({behavior:'smooth'})">Ver detalles →</button>
     </div>
 
   </div>
@@ -595,39 +605,121 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
 <div class="divider"></div>
 
 
+<!-- ═══ FAQ ═══ -->
+<section id="faq" style="background:var(--negro2);">
+  <div style="max-width:1200px;margin:0 auto;">
+    <div class="reveal">
+      <div class="section-tag">Preguntas frecuentes</div>
+      <h2 class="section-title">Lo que todo el mundo<br>quiere saber.</h2>
+    </div>
+    <div style="max-width:760px;margin:3rem auto 0;" class="reveal">
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">¿Hay permanencia mínima?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">No. Trabajamos mes a mes sin permanencias ocultas ni contratos de larga duración. Creemos que si el trabajo es bueno, no necesitamos atarte. Dicho esto, los mejores resultados siempre llegan con constancia — recomendamos un compromiso mínimo de 3 meses para ver crecimiento real.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">¿En cuánto tiempo se ven resultados?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Depende del punto de partida de cada marca, pero en general: las primeras semanas son de construcción y estrategia. Entre el mes 1 y 2 empiezas a ver crecimiento en métricas. A partir del mes 3, con constancia, los resultados se hacen visibles y medibles. El marketing digital no es magia instantánea — es un sistema que se construye.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">¿Cómo es el proceso para empezar?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Simple: 1) Nos escribes por WhatsApp o rellenas el formulario. 2) Hacemos una llamada de 30 min gratuita para entender tu negocio y ver si hay encaje. 3) Si todo cuadra, te enviamos una propuesta adaptada. 4) Firmamos y empezamos con la llamada de onboarding. Desde el primer día, tu marca empieza a moverse.</div>
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" onclick="toggleFaq(this)">
+          <span class="faq-question-text">¿Qué pasa si quiero cambiar de plan?</span>
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          <div class="faq-answer-inner">Sin problema. Puedes subir o bajar de plan en cualquier momento — lo hablamos al principio del siguiente mes. Muchos clientes empiezan en Presencia, ven resultados y pasan a Conversión o Escala. El sistema está diseñado para crecer contigo.</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+
 <!-- ═══ TEST COMPLETO — inline ═══ -->
 <section id="test">
   <!-- Intro teaser — centrado -->
   <div class="reveal" style="max-width:640px;margin:0 auto 5rem;text-align:center;">
     <div class="section-tag" style="justify-content:center;">Test de negocio · Gratuito</div>
     <h2 class="section-title" style="font-size:clamp(1.6rem,3vw,2.5rem);">No pierdas más tiempo<br>adivinando.</h2>
-    <p class="section-sub" style="max-width:100%;margin:0 auto 1rem;">Conocé la etapa de tu negocio y recibí una guía práctica para avanzar con claridad. Realizá el test gratuito y recibí recomendaciones personalizadas en minutos.</p>
+    <p class="section-sub" style="max-width:100%;margin:0 auto 1rem;">¿En qué punto está tu marca? ¿Qué necesitas realmente para crecer? En 3 minutos tienes claridad — y sabes exactamente qué paso dar a continuación.</p>
     <div style="font-size:.72rem;color:var(--texto3);letter-spacing:.15em;text-transform:uppercase;margin-bottom:2rem;">9 preguntas · 3 minutos · resultado inmediato</div>
     <a href="#test-widget" class="btn-primary">Quiero hacer el test gratis →</a>
   </div>
 
-  <!-- Beneficios 4 cols -->
+  <!-- Beneficios 4 cols — SVG icons -->
   <div class="test-beneficios reveal">
+
     <div class="test-beneficio-card">
-      <span style="font-size:2rem;margin-bottom:1rem;display:block;">🔍</span>
-      <div class="test-beneficio-titulo">Descubrí en qué etapa está tu negocio</div>
-      <p class="test-beneficio-desc">Identificá tu punto de partida real y diseñá un camino estratégico con dirección clara.</p>
+      <div style="margin-bottom:1.1rem;">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="17" stroke="#AF0061" stroke-width="1.5"/>
+          <circle cx="16" cy="15" r="5" stroke="#AF0061" stroke-width="1.5"/>
+          <path d="M20 20l5 5" stroke="#AF0061" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="16" cy="15" r="2" fill="#AF0061" opacity=".3"/>
+        </svg>
+      </div>
+      <div class="test-beneficio-titulo">Dónde estás realmente.</div>
     </div>
+
     <div class="test-beneficio-card">
-      <span style="font-size:2rem;margin-bottom:1rem;display:block;">📋</span>
-      <div class="test-beneficio-titulo">Recibí recomendaciones prácticas y personalizadas</div>
-      <p class="test-beneficio-desc">Acciones inmediatas que podés aplicar hoy y estrategias a largo plazo adaptadas a tu situación.</p>
+      <div style="margin-bottom:1.1rem;">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="17" stroke="#AF0061" stroke-width="1.5"/>
+          <path d="M11 18h14M11 13h9M11 23h11" stroke="#AF0061" stroke-width="1.5" stroke-linecap="round"/>
+          <circle cx="26" cy="13" r="2" fill="#AF0061"/>
+        </svg>
+      </div>
+      <div class="test-beneficio-titulo">Qué hacer primero.</div>
     </div>
+
     <div class="test-beneficio-card">
-      <span style="font-size:2rem;margin-bottom:1rem;display:block;">🌱</span>
-      <div class="test-beneficio-titulo">Detectá oportunidades ocultas</div>
-      <p class="test-beneficio-desc">Aspectos de tu negocio que quizás estás pasando por alto y que pueden cambiar tus resultados.</p>
+      <div style="margin-bottom:1.1rem;">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="17" stroke="#AF0061" stroke-width="1.5"/>
+          <path d="M18 10v4M18 22v4M10 18h4M22 18h4" stroke="#AF0061" stroke-width="1.5" stroke-linecap="round" opacity=".5"/>
+          <circle cx="18" cy="18" r="4" stroke="#AF0061" stroke-width="1.5"/>
+          <circle cx="18" cy="18" r="1.5" fill="#AF0061"/>
+        </svg>
+      </div>
+      <div class="test-beneficio-titulo">Lo que te estás perdiendo.</div>
     </div>
+
     <div class="test-beneficio-card">
-      <span style="font-size:2rem;margin-bottom:1rem;display:block;">⚡</span>
-      <div class="test-beneficio-titulo">Tomá decisiones estratégicas con claridad</div>
-      <p class="test-beneficio-desc">Visión completa para avanzar con seguridad sin adivinar cuál es el próximo paso correcto.</p>
+      <div style="margin-bottom:1.1rem;">
+        <svg width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="18" cy="18" r="17" stroke="#AF0061" stroke-width="1.5"/>
+          <path d="M18 11l2 5h5l-4 3 1.5 5L18 21l-4.5 3 1.5-5-4-3h5z" stroke="#AF0061" stroke-width="1.5" stroke-linejoin="round" fill="#AF0061" fill-opacity=".15"/>
+        </svg>
+      </div>
+      <div class="test-beneficio-titulo">Hacia dónde ir.</div>
     </div>
+
   </div>
 
   <!-- Widget del test -->
@@ -795,57 +887,6 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
 <div class="divider"></div>
 
 
-<!-- ═══ RECURSOS ═══ -->
-<section id="recursos">
-  <div class="recursos-header reveal">
-    <div class="section-tag">Recursos gratuitos</div>
-    <h2 class="section-title">Herramientas gratuitas<br>para empezar hoy.</h2>
-    <p class="section-sub">Herramientas prácticas para empezar a mejorar tu presencia digital hoy mismo.</p>
-  </div>
-  <div class="recursos-grid-3 reveal">
-
-    <div class="recurso-card">
-      <div class="recurso-tipo">Guía PDF — Gratuita</div>
-      <div class="recurso-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg></div>
-      <div class="recurso-nombre">Cómo conseguir clientes con Instagram sin pagar publicidad</div>
-      <p class="recurso-desc">10 estrategias probadas para negocios locales que quieren crecer orgánicamente en redes sociales.</p>
-      <button class="recurso-download" onclick="showDlModal()">Descargar gratis →</button>
-    </div>
-
-    <div class="recurso-card">
-      <div class="recurso-tipo">Checklist — Gratuita</div>
-      <div class="recurso-icon"><svg viewBox="0 0 24 24"><polyline points="9 11 12 14 22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg></div>
-      <div class="recurso-nombre">Checklist: Perfil de Instagram optimizado para negocios locales</div>
-      <p class="recurso-desc">27 puntos de control para transformar tu perfil en una herramienta de ventas activa.</p>
-      <button class="recurso-download" onclick="showDlModal()">Descargar gratis →</button>
-    </div>
-
-    <div class="recurso-card">
-      <div class="recurso-tipo">Mini-guía — Gratuita</div>
-      <div class="recurso-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg></div>
-      <div class="recurso-nombre">El error #1 que cometen los negocios locales en Meta Ads</div>
-      <p class="recurso-desc">Por qué el 80% de las campañas fracasan y qué hacer diferente desde el primer euro.</p>
-      <button class="recurso-download" onclick="showDlModal()">Descargar gratis →</button>
-    </div>
-
-  </div>
-</section>
-
-<!-- MODAL DESCARGA -->
-<div class="dl-modal" id="dlModal">
-  <div class="dl-modal-box">
-    <div style="font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fucsia);margin-bottom:1rem;">Acceso gratuito</div>
-    <h3 style="font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.3rem;color:var(--blanco);margin-bottom:.5rem;">Dejá tu email y recibilo</h3>
-    <p style="font-size:.85rem;color:var(--texto2);margin-bottom:2rem;">Te enviamos el recurso directamente. Sin spam.</p>
-    <input type="email" class="form-input" id="modalEmail" placeholder="tu@email.com" style="margin-bottom:1rem;">
-    <button class="btn-primary" style="width:100%;text-align:center;" onclick="submitDownload()">Enviarme el recurso →</button>
-    <button onclick="closeDlModal()" style="position:absolute;top:1rem;right:1rem;background:transparent;border:none;color:var(--texto3);cursor:pointer;font-size:1.25rem;">✕</button>
-  </div>
-</div>
-
-<div class="divider"></div>
-
-
 <!-- ═══ CONTACTO ═══ -->
 <section id="contacto">
   <div class="contacto-wrap reveal">
@@ -882,7 +923,7 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
     <a href="#nosotros">Nosotros</a>
     <a href="#planes">Planes</a>
     <a href="#test">Test</a>
-    <a href="#recursos">Recursos</a>
+    
     <a href="https://www.instagram.com/urano.mkt/" target="_blank" class="ig-link">
       <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
         <defs>
@@ -908,6 +949,13 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
 window.addEventListener('scroll',function(){document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>60)});
 const obs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.1});
 document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+function toggleFaq(btn){
+  const item=btn.closest('.faq-item');
+  const isOpen=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
+  if(!isOpen)item.classList.add('open');
+}
 
 // TEST — 9 preguntas
 let currentStep=0;
@@ -998,14 +1046,14 @@ function showResult(){
     desc='Aún no hay una base clara ni estrategia definida, pero tenés algo valioso: todo por construir sin vicios ni errores acumulados.';
     pasando='Probablemente estás pensando mucho pero ejecutando poco, o ejecutando sin una dirección clara.';
     necesita='Claridad + validación + primeros pasos estratégicos. Antes de crear contenido, necesitas saber a quién le hablas y qué quieres lograr.';
-    cta='#recursos';ctaLabel='Ver recursos gratuitos →';
+    cta='whatsapp';ctaLabel='Escribirme por WhatsApp →';
   } else if(total<=20){
     emoji='🚀';nivel='Marca en construcción';
     titulo='Ya estás en movimiento. Ahora necesitas dirección.';
     desc='Hay energía y acción, pero sin una estrategia que conecte todo. El resultado: esfuerzo que no se convierte en crecimiento real.';
     pasando='Publicas, pero no conviertes. Haces cosas, pero no hay un hilo conductor que las una.';
     necesita='Orden, enfoque y una estrategia clara de contenido que conecte lo que haces con lo que quieres lograr.';
-    cta='#recursos';ctaLabel='Ver guías + contenido formativo →';
+    cta='whatsapp';ctaLabel='Escribirme por WhatsApp →';
   } else if(total<=26){
     emoji='📈';nivel='Marca en crecimiento';
     titulo='Tenés base. Ahora es momento de potenciarla.';
@@ -1033,7 +1081,11 @@ function showResult(){
      <div class="result-rec-desc">${ctaLabel.replace(' →','')}</div>`;
   const ctaBtn=document.getElementById('resultCTA');
   ctaBtn.textContent=ctaLabel;
-  ctaBtn.onclick=()=>document.querySelector(cta).scrollIntoView({behavior:'smooth'});
+  if(cta==='whatsapp'){
+    ctaBtn.onclick=()=>window.open('https://wa.me/34663266217?text=Hola%2C%20hice%20el%20test%20de%20marca%20y%20quiero%20saber%20c%C3%B3mo%20podemos%20trabajar%20juntos','_blank');
+  } else {
+    ctaBtn.onclick=()=>document.querySelector(cta).scrollIntoView({behavior:'smooth'});
+  }
 
   document.getElementById('testResult').classList.add('active');
   setTimeout(()=>{document.getElementById('testResult').scrollIntoView({behavior:'smooth',block:'start'})},200);
