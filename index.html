@@ -921,10 +921,12 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
         <option value="escala">Plan Escala — Domina tu mercado</option>
         <option value="no-se">Aún no lo sé, necesito orientación</option>
       </select>
-      <a href="https://wa.me/34672584373?text=Hola%2C%20quiero%20reservar%20mi%20sesi%C3%B3n%20gratuita%20con%20Urano%20mkt" target="_blank" class="btn-primary" style="margin-top:.5rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:.6rem;text-decoration:none;">
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.855L.054 23.447a.5.5 0 0 0 .617.606l5.807-1.524A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.955 9.955 0 0 1-5.127-1.415l-.367-.218-3.804.998 1.015-3.698-.24-.382A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-        Escribirme por WhatsApp →
-      </a>
+      <button type="submit" id="contactSubmitBtn" class="btn-primary" style="margin-top:.5rem;text-align:center;width:100%;border:none;cursor:pointer;">
+        Enviar solicitud →
+      </button>
+      <p style="text-align:center;margin-top:1rem;font-size:.82rem;color:var(--texto3)">¿Preferís hablar directo?
+        <a href="https://wa.me/34672584373?text=Hola%2C%20quiero%20reservar%20mi%20sesi%C3%B3n%20gratuita%20con%20Urano%20mkt" target="_blank" style="color:var(--fucsia);text-decoration:none;">Escribime por WhatsApp →</a>
+      </p>
     </form>
   </div>
 </section>
@@ -1142,12 +1144,12 @@ if(document.getElementById('dlModal'))document.getElementById('dlModal').addEven
 function submitDownload(){const btn=document.querySelector('#dlModal .btn-primary');btn.textContent='¡Enviado! Revisá tu email ✓';btn.style.background='#1a7a1a';setTimeout(closeDlModal,2000)}
 async function submitForm(e){
   e.preventDefault();
-  const btn=e.target.querySelector('a.btn-primary,button.btn-primary');
+  const btn=document.getElementById('contactSubmitBtn');
   const name=document.getElementById('contactName').value.trim();
   const email=document.getElementById('contactEmail').value.trim();
   const service=document.getElementById('contactService').value;
   const business=document.getElementById('contactBusiness').value.trim();
-  if(btn){btn.textContent='Enviando...';btn.style.opacity='0.7';}
+  if(btn){btn.textContent='Enviando...';btn.style.opacity='0.7';btn.disabled=true;}
   try{
     await fetch('/api/submit-contact',{
       method:'POST',
@@ -1156,7 +1158,7 @@ async function submitForm(e){
     });
     if(btn){btn.textContent='¡Enviado! Te contactamos pronto ✓';btn.style.background='#1a7a1a';btn.style.opacity='1';}
   }catch(err){
-    if(btn){btn.textContent='Enviado ✓';btn.style.background='#1a7a1a';btn.style.opacity='1';}
+    if(btn){btn.textContent='¡Enviado! ✓';btn.style.background='#1a7a1a';btn.style.opacity='1';}
   }
 }
 </script>
