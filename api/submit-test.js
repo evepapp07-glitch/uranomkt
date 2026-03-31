@@ -15,31 +15,35 @@ export default async function handler(req, res) {
 
   try {
     // 1. Guardar en Notion CRM
+    const notionProperties = {
+      Nombre: { title: [{ text: { content: name || '' } }] },
+      Email: { email: email },
+      Fuente: { select: { name: 'Test de Diagnóstico' } },
+      'Nivel de Marca': { select: { name: nivel } },
+      'Puntaje Test': { number: Number(score) },
+      Estado: { select: { name: 'Nuevo' } },
+    };
+    if (instagram) {
+      const igUrl = instagram.startsWith('http') ? instagram : `https://instagram.com/${instagram.replace('@','')}`;
+      notionProperties.Instagram = { url: igUrl };
+    }
     await notion.pages.create({
       parent: { database_id: process.env.NOTION_DB_ID },
-      properties: {
-        Nombre: { title: [{ text: { content: name } }] },
-        Email: { email: email },
-        Fuente: { select: { name: 'Test de Diagnóstico' } },
-        'Nivel de Marca': { select: { name: nivel } },
-        'Puntaje Test': { number: score },
-        Instagram: instagram ? { url: instagram.startsWith('http') ? instagram : `https://instagram.com/${instagram.replace('@','')}` } : undefined,
-        Estado: { select: { name: 'Nuevo' } },
-      }
+      properties: notionProperties,
     });
 
-    // 2. Email al lead con su resultado
+    // 2. Email al lead con su resultado (va a uranomkt.07@gmail.com hasta tener dominio verificado)
     await resend.emails.send({
       from: 'Urano MKT <onboarding@resend.dev>',
-      to: email,
-      subject: `Tu diagnóstico de marca está listo, ${name} 🔥`,
+      to: 'uranomkt.07@gmail.com',
+      subject: `[LEAD: ${name}] Tu diagnóstico de marca está listo 🔥`,
       html: buildResultEmail(name, score, nivel, desc, necesita),
     });
 
     // 3. Notificación a vos
     await resend.emails.send({
       from: 'Urano MKT <onboarding@resend.dev>',
-      to: process.env.OWNER_EMAIL,
+      to: 'uranomkt.07@gmail.com',
       subject: `🔥 Nuevo lead: ${name} — ${nivel}`,
       html: `
         <div style="font-family:sans-serif;max-width:500px">
