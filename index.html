@@ -35,6 +35,12 @@ nav.scrolled{background:rgba(13,13,13,.97)}
 .nav-cta{font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--fucsia);border:1px solid var(--fucsia);padding:.5rem 1.25rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
 .nav-cta:hover{background:var(--fucsia);color:#fff}
 
+/* ── WHATSAPP FLOAT ── */
+.wa-float{position:fixed;bottom:2rem;right:2rem;z-index:500;background:#25D366;color:#fff;width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.4);transition:transform .2s,box-shadow .2s}
+.wa-float:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(37,211,102,.55)}
+.btn-wa-hero{font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:#25D366;color:#fff;border:none;padding:.9rem 2rem;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.6rem}
+.btn-wa-hero:hover{background:#1ebe5a;transform:translateY(-2px)}
+
 /* ── BUTTONS ── */
 .btn-primary{font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--fucsia);color:#fff;border:none;padding:.9rem 2rem;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-block}
 .btn-primary:hover{background:#d4007a;transform:translateY(-2px)}
@@ -45,7 +51,7 @@ nav.scrolled{background:rgba(13,13,13,.97)}
 .hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;position:relative}
 .hero-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(175,0,97,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(175,0,97,.04) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black,transparent)}
 .hero-eyebrow{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--fucsia);margin-bottom:1.5rem;opacity:0;animation:fadeUp .8s .2s forwards}
-.hero h1{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2.8rem,7vw,6rem);line-height:1;letter-spacing:-.02em;color:var(--blanco);max-width:900px;opacity:0;animation:fadeUp .8s .4s forwards}
+.hero h1{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2.8rem,7vw,6rem);line-height:1;letter-spacing:-.02em;text-transform:uppercase;color:var(--blanco);max-width:900px;opacity:0;animation:fadeUp .8s .4s forwards}
 .hero h1 em{font-style:normal;color:var(--fucsia)}
 .hero-sub{margin-top:1.75rem;font-size:1rem;color:var(--texto2);max-width:560px;line-height:1.75;opacity:0;animation:fadeUp .8s .6s forwards}
 .hero-actions{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;opacity:0;animation:fadeUp .8s .8s forwards}
@@ -61,7 +67,7 @@ nav.scrolled{background:rgba(13,13,13,.97)}
 /* ── SECTIONS ── */
 section{padding:7rem 4rem;position:relative}
 .section-tag{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--fucsia);margin-bottom:1rem}
-.section-title{font-family:'Montserrat',sans-serif;font-weight:800;font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;letter-spacing:-.02em;color:var(--blanco);margin-bottom:1rem}
+.section-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2rem,4vw,3.2rem);line-height:1.1;letter-spacing:-.02em;text-transform:uppercase;color:var(--blanco);margin-bottom:1rem}
 .section-sub{font-size:.95rem;color:var(--texto2);max-width:500px;line-height:1.75}
 
 /* ── NOSOTROS / QUÉ HACEMOS ── */
@@ -297,6 +303,11 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
 </head>
 <body>
 
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/34672584373?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20Urano%20mkt" class="wa-float" target="_blank" title="Escríbenos por WhatsApp">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.855L.054 23.447a.5.5 0 0 0 .617.606l5.807-1.524A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.955 9.955 0 0 1-5.127-1.415l-.367-.218-3.804.998 1.015-3.698-.24-.382A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+</a>
+
 <!-- ═══ NAV ═══ -->
 <nav id="mainNav">
   <a href="index.html" style="display:flex;align-items:center;text-decoration:none;">
@@ -312,7 +323,7 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
   </div>
   <div style="display:flex;align-items:center;gap:.75rem;">
     <!-- Instagram icon -->
-    <a href="https://www.instagram.com/urano.mkt/" target="_blank" title="@urano.mkt" style="display:flex;align-items:center;transition:transform .2s;" onmouseenter="this.style.transform='scale(1.12)'" onmouseleave="this.style.transform='scale(1)'">
+    <a href="https://www.instagram.com/urano.mkt//" target="_blank" title="@urano.mkt" style="display:flex;align-items:center;transition:transform .2s;" onmouseenter="this.style.transform='scale(1.12)'" onmouseleave="this.style.transform='scale(1)'">
       <svg viewBox="0 0 24 24" width="28" height="28" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="ig-nav" cx="30%" cy="107%" r="150%">
@@ -344,10 +355,10 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
   <h1>Tu negocio merece<br>ser <em>visto.</em></h1>
   <p class="hero-sub">Creo contenido audiovisual para marcas, construyo su estrategia de comunicación y gestiono sus redes — para que no solo esté presente, sino que conecte y crezca.</p>
   <div class="hero-actions">
-    <a href="#nosotros" class="btn-primary">Conocé cómo trabajamos</a>
-    <a href="https://wa.me/34672584373?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Urano%20mkt" target="_blank" class="btn-ghost" style="display:inline-flex;align-items:center;gap:.5rem;">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.855L.054 23.447a.5.5 0 0 0 .617.606l5.807-1.524A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.955 9.955 0 0 1-5.127-1.415l-.367-.218-3.804.998 1.015-3.698-.24-.382A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
-      WhatsApp
+    <a href="#nosotros" class="btn-primary">Ver cómo trabajamos</a>
+    <a href="https://wa.me/34672584373?text=Hola%2C%20quiero%20saber%20m%C3%A1s%20sobre%20Urano%20mkt" target="_blank" class="btn-wa-hero">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.855L.054 23.447a.5.5 0 0 0 .617.606l5.807-1.524A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.955 9.955 0 0 1-5.127-1.415l-.367-.218-3.804.998 1.015-3.698-.24-.382A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+      Hablar por WhatsApp
     </a>
   </div>
   <div class="hero-stats">
@@ -909,24 +920,22 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
     <p class="section-sub" style="margin:0 auto;">Descubre qué necesita tu negocio y si somos el equipo indicado para ti.</p>
     <form class="contacto-form" onsubmit="submitForm(event)">
       <div class="form-row">
-        <input type="text" id="contactName" class="form-input" placeholder="Tu nombre" required>
-        <input type="text" id="contactBusiness" class="form-input" placeholder="Nombre del negocio" required>
+        <input type="text" class="form-input" placeholder="Tu nombre" required>
+        <input type="text" class="form-input" placeholder="Nombre del negocio" required>
       </div>
-      <input type="email" id="contactEmail" class="form-input" placeholder="Tu email" required>
-      <input type="tel" id="contactPhone" class="form-input" placeholder="WhatsApp / Teléfono">
-      <select id="contactService" class="form-select" required>
+      <input type="email" class="form-input" placeholder="Tu email" required>
+      <input type="tel" class="form-input" placeholder="WhatsApp / Teléfono">
+      <select class="form-select" required>
         <option value="" disabled selected>¿Qué plan te interesa?</option>
         <option value="presencia">Plan Presencia — Construye tu base</option>
         <option value="conversion">Plan Conversión — Activa tu crecimiento</option>
         <option value="escala">Plan Escala — Domina tu mercado</option>
         <option value="no-se">Aún no lo sé, necesito orientación</option>
       </select>
-      <button type="submit" id="contactSubmitBtn" class="btn-primary" style="margin-top:.5rem;text-align:center;width:100%;border:none;cursor:pointer;">
-        Enviar solicitud →
-      </button>
-      <p style="text-align:center;margin-top:1rem;font-size:.82rem;color:var(--texto3)">¿Preferís hablar directo?
-        <a href="https://wa.me/34672584373?text=Hola%2C%20quiero%20reservar%20mi%20sesi%C3%B3n%20gratuita%20con%20Urano%20mkt" target="_blank" style="color:var(--fucsia);text-decoration:none;">Escribime por WhatsApp →</a>
-      </p>
+      <a href="https://wa.me/34672584373?text=Hola%2C%20quiero%20reservar%20mi%20sesi%C3%B3n%20gratuita%20con%20Urano%20mkt" target="_blank" class="btn-primary" style="margin-top:.5rem;text-align:center;display:flex;align-items:center;justify-content:center;gap:.6rem;text-decoration:none;">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.855L.054 23.447a.5.5 0 0 0 .617.606l5.807-1.524A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.955 9.955 0 0 1-5.127-1.415l-.367-.218-3.804.998 1.015-3.698-.24-.382A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Escribirme por WhatsApp →
+      </a>
     </form>
   </div>
 </section>
@@ -940,7 +949,7 @@ footer{background:var(--negro2);border-top:1px solid var(--gris);padding:3rem 4r
     <a href="#planes">Planes</a>
     <a href="#test">Test</a>
     
-    <a href="https://www.instagram.com/urano.mkt/" target="_blank" class="ig-link">
+    <a href="https://www.instagram.com/urano.mkt//" target="_blank" class="ig-link">
       <svg viewBox="0 0 24 24" width="22" height="22" xmlns="http://www.w3.org/2000/svg">
         <defs>
           <radialGradient id="ig-footer" cx="30%" cy="107%" r="150%">
@@ -1038,30 +1047,13 @@ function prevStep(){
   }
 }
 
-async function submitCapture(){
+function submitCapture(){
   const name=document.getElementById('captureName').value.trim();
   const email=document.getElementById('captureEmail').value.trim();
-  const instagram=document.getElementById('captureInstagram').value.trim();
   if(!name||!email){
     document.getElementById('captureError').style.display='block';return;
   }
   document.getElementById('captureError').style.display='none';
-
-  // Calcular resultado
-  const total=answers.reduce((a,b)=>a+(b||0),0);
-  let nivel,desc,necesita;
-  if(total<=14){nivel='Marca en fase idea 🌱';desc='Aún no hay una base clara ni estrategia definida, pero tenés algo valioso: todo por construir sin vicios ni errores acumulados.';necesita='Claridad + validación + primeros pasos estratégicos. Antes de crear contenido, necesitas saber a quién le hablas y qué quieres lograr.';}
-  else if(total<=20){nivel='Marca en construcción 🚀';desc='Hay energía y acción, pero sin una estrategia que conecte todo. El resultado: esfuerzo que no se convierte en crecimiento real.';necesita='Orden, enfoque y una estrategia clara de contenido que conecte lo que haces con lo que quieres lograr.';}
-  else if(total<=26){nivel='Marca en crecimiento 📈';desc='Hay esfuerzo, hay presencia, pero falta dirección estratégica para convertir todo ese trabajo en resultados concretos y predecibles.';necesita='Optimizar contenido, comunicación y conversión. Trabajar con intención en cada pieza que publicás.';}
-  else{nivel='Marca lista para escalar 🔥';desc='Ya no necesitás más prueba y error. Tenés claridad, constancia y resultados. El siguiente paso es profesionalizar y escalar con estrategia avanzada.';necesita='Estrategia avanzada + ejecución profesional. Un sistema que trabaje para ti todos los días.';}
-
-  // Enviar a la API (sin bloquear el UX)
-  fetch('/api/submit-test',{
-    method:'POST',
-    headers:{'Content-Type':'application/json'},
-    body:JSON.stringify({name,email,instagram,score:total,nivel,desc,necesita})
-  }).catch(()=>{});
-
   document.getElementById('captureForm').style.display='none';
   showResult();
 }
@@ -1138,29 +1130,7 @@ function resetTest(){
   document.getElementById('test-widget').scrollIntoView({behavior:'smooth'});
 }
 showStep(0);
-function showDlModal(){document.getElementById('dlModal').classList.add('open')}
-function closeDlModal(){document.getElementById('dlModal').classList.remove('open')}
-if(document.getElementById('dlModal'))document.getElementById('dlModal').addEventListener('click',function(e){if(e.target===this)closeDlModal()});
-function submitDownload(){const btn=document.querySelector('#dlModal .btn-primary');btn.textContent='¡Enviado! Revisá tu email ✓';btn.style.background='#1a7a1a';setTimeout(closeDlModal,2000)}
-async function submitForm(e){
-  e.preventDefault();
-  const btn=document.getElementById('contactSubmitBtn');
-  const name=document.getElementById('contactName').value.trim();
-  const email=document.getElementById('contactEmail').value.trim();
-  const service=document.getElementById('contactService').value;
-  const business=document.getElementById('contactBusiness').value.trim();
-  if(btn){btn.textContent='Enviando...';btn.style.opacity='0.7';btn.disabled=true;}
-  try{
-    await fetch('/api/submit-contact',{
-      method:'POST',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({name,email,service,message:`Negocio: ${business}`})
-    });
-    if(btn){btn.textContent='¡Enviado! Te contactamos pronto ✓';btn.style.background='#1a7a1a';btn.style.opacity='1';}
-  }catch(err){
-    if(btn){btn.textContent='¡Enviado! ✓';btn.style.background='#1a7a1a';btn.style.opacity='1';}
-  }
-}
+function submitForm(e){e.preventDefault();const btn=e.target.querySelector('a.btn-primary');btn.textContent='Solicitud enviada ✓';btn.style.background='#1a7a1a'}
 </script>
 </body>
 </html>
