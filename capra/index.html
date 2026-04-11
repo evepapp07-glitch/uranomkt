@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Capri — Tecnología para tu negocio</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--azul:#4285F4;--rojo:#EA4335;--amarillo:#FBBC05;--verde:#34A853;--negro:#0D0D0D;--negro2:#141414;--negro3:#1C1C1C;--gris:#2A2A2A;--gris2:#3A3A3A;--texto:#E8E8E8;--texto2:#9A9A9A;--texto3:#5A5A5A;--blanco:#F8F9FA;}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--negro);color:var(--texto);font-family:'Poppins',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1rem 4rem;display:flex;align-items:center;justify-content:space-between;background:rgba(13,13,13,.92);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.05)}
+nav.scrolled{background:rgba(13,13,13,.99)}
+.nav-logo img{height:38px;width:auto}
+.nav-links{display:flex;gap:2.5rem}
+.nav-links a{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--texto2);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--azul)}
+.nav-wa{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--verde);border:1px solid var(--verde);padding:.5rem 1.25rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
+.nav-wa:hover{background:var(--verde);color:#fff}
+.btn-p{font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--azul);color:#fff;border:none;padding:.9rem 2rem;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-block}
+.btn-p:hover{background:#2b6fd4;transform:translateY(-2px)}
+.btn-wa{font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--verde);color:#fff;border:none;padding:.9rem 2rem;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.6rem}
+.btn-wa:hover{background:#28a045;transform:translateY(-2px)}
+.btn-b{font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:#fff;color:var(--negro);padding:.9rem 2rem;text-decoration:none;transition:all .2s;display:inline-block;flex-shrink:0}
+.btn-b:hover{opacity:.88}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:8rem 2rem 5rem;position:relative}
+.hero-bg{position:absolute;inset:0;background-image:linear-gradient(rgba(66,133,244,.03) 1px,transparent 1px),linear-gradient(90deg,rgba(66,133,244,.03) 1px,transparent 1px);background-size:60px 60px;mask-image:radial-gradient(ellipse 80% 60% at 50% 50%,black,transparent)}
+.hero-logo{margin-bottom:2.5rem;opacity:0;animation:up .7s .1s both}
+.hero-logo img{height:110px;width:auto}
+.hero-tag{font-family:'Montserrat',sans-serif;font-size:.7rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--azul);margin-bottom:1.5rem;opacity:0;animation:up .7s .2s both}
+.hero h1{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2.4rem,6vw,5.2rem);line-height:1.0;letter-spacing:-.02em;text-transform:uppercase;color:var(--blanco);max-width:860px;opacity:0;animation:up .7s .35s both}
+.hero h1 em{font-style:normal;color:var(--amarillo)}
+.hero-sub{margin-top:1.5rem;font-size:1rem;color:var(--texto2);max-width:560px;line-height:1.8;opacity:0;animation:up .7s .5s both}
+.hero-actions{margin-top:2.5rem;display:flex;gap:1rem;flex-wrap:wrap;justify-content:center;opacity:0;animation:up .7s .65s both}
+.hero-stats{margin-top:5rem;display:flex;gap:4rem;flex-wrap:wrap;justify-content:center;opacity:0;animation:up .7s .8s both}
+.stat{text-align:center}
+.stat-num{font-family:'Montserrat',sans-serif;font-weight:900;font-size:2rem;line-height:1}
+.stat-label{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--texto3);margin-top:.3rem}
+@keyframes up{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+section{padding:7rem 4rem;position:relative;z-index:1}
+.s-tag{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.3em;text-transform:uppercase;color:var(--azul);margin-bottom:1rem}
+.s-title{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(1.8rem,3.5vw,3rem);line-height:1.05;letter-spacing:-.02em;text-transform:uppercase;color:var(--blanco);margin-bottom:1rem}
+.s-sub{font-size:.9rem;color:var(--texto2);max-width:480px;line-height:1.8}
+.max{max-width:1200px;margin:0 auto}
+#productos{background:var(--negro2)}
+.prod-head{display:flex;align-items:flex-end;justify-content:space-between;gap:2rem;flex-wrap:wrap;margin-bottom:4rem}
+.tabs{display:flex;border-bottom:1px solid var(--gris);margin-bottom:3rem}
+.tab-btn{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;background:none;border:none;color:var(--texto3);padding:.85rem 1.5rem;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all .2s}
+.tab-btn.active{color:var(--blanco);border-bottom-color:var(--azul)}
+.tab-btn[data-t="reviews"].active{border-bottom-color:var(--amarillo);color:var(--amarillo)}
+.tab-btn[data-t="pantallas"].active{border-bottom-color:var(--azul);color:var(--azul)}
+.tab-btn[data-t="fidelizacion"].active{border-bottom-color:var(--verde);color:var(--verde)}
+.tab{display:none}
+.tab.active{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:1.5px;background:var(--gris)}
+.card{background:var(--negro2);padding:2rem 1.75rem;transition:background .25s;position:relative;overflow:hidden}
+.card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;transform:scaleX(0);transform-origin:left;transition:transform .3s}
+.card:hover{background:var(--negro3)}
+.card:hover::after{transform:scaleX(1)}
+.card[data-c="y"]::after{background:var(--amarillo)}
+.card[data-c="b"]::after{background:var(--azul)}
+.card[data-c="g"]::after{background:var(--verde)}
+.card[data-c="r"]::after{background:var(--rojo)}
+.dot{width:10px;height:10px;border-radius:50%;margin-bottom:1.25rem;display:block}
+.card-nombre{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem;text-transform:uppercase;letter-spacing:.04em;color:var(--blanco);margin-bottom:.5rem}
+.card-desc{font-size:.82rem;color:var(--texto2);line-height:1.65;margin-bottom:1rem}
+.card-wa{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--verde);border:1px solid rgba(52,168,83,.35);padding:.45rem .9rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.4rem}
+.card-wa:hover{background:var(--verde);color:#fff;border-color:var(--verde)}
+#packs{background:var(--negro)}
+.packs{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1.5px;background:var(--gris);margin-top:3rem}
+.pack{background:var(--negro);padding:2.5rem 2rem;position:relative;transition:background .25s}
+.pack:hover{background:var(--negro3)}
+.pack-barra{height:3px;margin-bottom:2rem}
+.pack-tag{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--texto3);margin-bottom:.75rem}
+.pack-nombre{font-family:'Montserrat',sans-serif;font-weight:900;font-size:1.1rem;text-transform:uppercase;color:var(--blanco);margin-bottom:.75rem}
+.pack-desc{font-size:.82rem;color:var(--texto2);line-height:1.7;margin-bottom:1.5rem}
+.pack-items{margin-bottom:1.5rem}
+.pack-item{font-size:.8rem;color:var(--texto2);padding:.35rem 0;border-bottom:1px solid var(--gris);display:flex;align-items:center;gap:.6rem}
+.pack-badge{position:absolute;top:1.5rem;right:1.5rem;font-family:'Montserrat',sans-serif;font-size:.6rem;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:.3rem .75rem}
+#como{background:var(--negro2)}
+.pasos{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5px;background:var(--gris);margin-top:3rem}
+.paso{background:var(--negro2);padding:2.5rem 2rem;position:relative;transition:background .25s;overflow:hidden}
+.paso::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:transparent;transition:background .3s}
+.paso:hover{background:var(--negro3)}
+.paso:hover::before{background:var(--azul)}
+.paso-n{font-family:'Montserrat',sans-serif;font-weight:900;font-size:3rem;line-height:1;color:var(--gris);margin-bottom:1.5rem;transition:color .3s}
+.paso:hover .paso-n{color:var(--azul)}
+.paso-titulo{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.88rem;text-transform:uppercase;letter-spacing:.06em;color:var(--blanco);margin-bottom:.6rem}
+.paso-desc{font-size:.82rem;color:var(--texto2);line-height:1.7}
+.band{padding:3.5rem 4rem;position:relative;overflow:hidden;z-index:1}
+.band::before{content:'';position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);background-size:40px 40px}
+.band-in{max-width:1200px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:2rem;flex-wrap:wrap;position:relative;z-index:1}
+.band-t{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(1.4rem,2.5vw,2.2rem);color:#fff;line-height:1.15;text-transform:uppercase;letter-spacing:-.01em;margin-bottom:.5rem}
+.band-s{font-size:.88rem;color:rgba(255,255,255,.7);line-height:1.7}
+#contacto{background:var(--negro2)}
+.contacto-in{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start}
+.c-opciones{display:flex;flex-direction:column;gap:.75rem;margin-top:2rem}
+.c-opcion{padding:1.5rem;background:rgba(255,255,255,.02);border:1px solid var(--gris);transition:border-color .2s;text-decoration:none;display:flex;align-items:center;gap:1rem}
+.c-opcion:hover{border-color:rgba(66,133,244,.3)}
+.c-ico{width:40px;height:40px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.c-titulo{font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--blanco);margin-bottom:.2rem}
+.c-sub{font-size:.78rem;color:var(--texto3)}
+.c-form{background:var(--negro3);padding:2.5rem;border:1px solid var(--gris)}
+.f-group{margin-bottom:1.25rem}
+.f-label{font-family:'Montserrat',sans-serif;font-size:.68rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--texto3);display:block;margin-bottom:.5rem}
+.f-input{width:100%;background:rgba(255,255,255,.03);border:1px solid var(--gris);padding:.75rem 1rem;color:var(--texto);font-family:'Poppins',sans-serif;font-size:.88rem;font-weight:300;outline:none;transition:border-color .2s}
+.f-input:focus{border-color:var(--azul)}
+footer{background:var(--negro);border-top:1px solid var(--gris);padding:3rem 4rem}
+.foot-in{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1.5rem}
+.foot-logos{display:flex;align-items:center;gap:24px}
+.foot-logos img{height:28px;width:auto;opacity:.85}
+.foot-logos .divider{width:1px;height:24px;background:var(--gris2)}
+.foot-copy{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--texto3)}
+.foot-links{display:flex;gap:2rem}
+.foot-links a{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;color:var(--texto3);text-decoration:none;transition:color .2s}
+.foot-links a:hover{color:var(--azul)}
+.wa-btn{position:fixed;bottom:2rem;right:2rem;z-index:500;background:var(--verde);width:56px;height:56px;border-radius:50%;display:flex;align-items:center;justify-content:center;text-decoration:none;box-shadow:0 4px 20px rgba(52,168,83,.4);transition:transform .2s,box-shadow .2s}
+.wa-btn:hover{transform:scale(1.08)}
+.rv{opacity:0;transform:translateY(16px);transition:opacity .6s,transform .6s}
+.rv.on{opacity:1;transform:none}
+@media(max-width:900px){nav{padding:1rem 1.5rem}.nav-links{display:none}section{padding:5rem 1.5rem}.band{padding:2.5rem 1.5rem}.pasos{grid-template-columns:1fr 1fr}.contacto-in{grid-template-columns:1fr;gap:3rem}footer{padding:2.5rem 1.5rem}}
+@media(max-width:560px){.pasos{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<a href="https://wa.me/34600000000?text=¡Hola!%20Me%20interesa%20saber%20más%20sobre%20The%20Capri" class="wa-btn" target="_blank">
+  <svg width="26" height="26" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+</a>
+
+<nav id="nav">
+  <a href="#" class="nav-logo"><img src="capri_logo.png" alt="The Capri"></a>
+  <div class="nav-links">
+    <a href="#productos">Productos</a>
+    <a href="#packs">Packs</a>
+    <a href="#como">Cómo funciona</a>
+    <a href="#opiniones">Opiniones</a>
+    <a href="#contacto">Contacto</a>
+  </div>
+  <a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20saber%20más%20sobre%20The%20Capri" class="nav-wa" target="_blank">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    Escríbenos
+  </a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-logo"><img src="capri_logo.png" alt="The Capri"></div>
+  <div class="hero-tag">Barcelona · Tecnología para negocios locales</div>
+  <h1>Más reseñas.<br>Más clientes.<br><em>Todo automático.</em></h1>
+  <p class="hero-sub">Instalamos tecnología NFC y pantallas digitales en tu negocio para que tus clientes te dejen reseñas solos, vuelvan a comprarte y te encuentren antes que a la competencia.</p>
+  <div style="margin-top:1.5rem;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;opacity:0;animation:up .7s .55s both;">
+    <span style="font-family:Montserrat,sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border:1px solid rgba(66,133,244,.3);color:var(--azul);">Tarjetas NFC</span>
+    <span style="font-family:Montserrat,sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border:1px solid rgba(52,168,83,.3);color:var(--verde);">Pantallas digitales</span>
+    <span style="font-family:Montserrat,sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border:1px solid rgba(251,188,5,.3);color:var(--amarillo);">Fidelización</span>
+    <span style="font-family:Montserrat,sans-serif;font-size:.68rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 14px;border:1px solid rgba(234,67,53,.3);color:var(--rojo);">Contacto inteligente</span>
+  </div>
+  <div class="hero-actions">
+    <a href="#productos" class="btn-p">Ver qué hacemos</a>
+    <a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20saber%20más%20sobre%20The%20Capri" class="btn-wa" target="_blank">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="white"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      ¡Escríbenos ya!
+    </a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat"><div class="stat-num" style="color:var(--amarillo)">3×</div><div class="stat-label">más reseñas en Google</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--verde)">24h</div><div class="stat-label">y ya está funcionando</div></div>
+    <div class="stat"><div class="stat-num" style="color:var(--azul)">+500</div><div class="stat-label">negocios conectados</div></div>
+  </div>
+</section>
+
+<!-- PRODUCTOS -->
+<section id="productos" class="rv">
+  <div class="max">
+    <div class="prod-head">
+      <div><div class="s-tag">Lo que hacemos</div><div class="s-title">Elige lo que necesitas.</div></div>
+      <p class="s-sub">Todo viene con diseño de tu marca, configurado y listo. Tú no tocas nada técnico.</p>
+    </div>
+    <div class="tabs">
+      <button class="tab-btn active" data-t="reviews" onclick="cambiaTab('reviews',this)">Reseñas Google</button>
+      <button class="tab-btn" data-t="pantallas" onclick="cambiaTab('pantallas',this)">Pantallas</button>
+      <button class="tab-btn" data-t="fidelizacion" onclick="cambiaTab('fidelizacion',this)">Fidelización</button>
+      <button class="tab-btn" data-t="contacto" onclick="cambiaTab('contacto',this)">Contacto NFC</button>
+    </div>
+    <div class="tab active" id="tab-reviews">
+      <div class="card" data-c="y"><span class="dot" style="background:var(--amarillo)"></span><div class="card-nombre">Tarjeta NFC Reseñas</div><div class="card-desc">El cliente acerca el móvil a la tarjeta. En 20 segundos está en tu Google Maps dejando 5 estrellas. Sin que nadie se lo pida.</div><a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20la%20Tarjeta%20NFC%20Reseñas" class="card-wa" target="_blank">Pedir por WhatsApp →</a></div>
+      <div class="card" data-c="y"><span class="dot" style="background:var(--amarillo)"></span><div class="card-nombre">Placa NFC para Mesas</div><div class="card-desc">Una plaquita en cada mesa de tu bar o restaurante. El cliente acaba de comer, toca y te valora. Sin pedírselo, sin rollos.</div><a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20la%20Placa%20NFC%20Mesa" class="card-wa" target="_blank">Pedir por WhatsApp →</a></div>
+      <div class="card" data-c="y"><span class="dot" style="background:var(--amarillo)"></span><div class="card-nombre">Sticker NFC Escaparate</div><div class="card-desc">Un sticker en la puerta de tu local. Quien pasa por la calle lo toca y llega directo a tu perfil de Google. Pack de 3 unidades.</div><a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20el%20Sticker%20NFC%20Escaparate" class="card-wa" target="_blank">Pedir por WhatsApp →</a></div>
+      <div class="card" data-c="g"><span class="dot" style="background:var(--verde)"></span><div class="card-nombre">NFC + WhatsApp Automático</div><div class="card-desc">El cliente toca → le llega un WhatsApp de gracias → le pedimos la reseña. Todo pasa solo. Tú a lo tuyo, que ya se encarga el sistema.</div><a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20NFC%20más%20WhatsApp%20automático" class="card-wa" target="_blank">Pedir por WhatsApp →</a></div>
+      <div class="card" data-c="y"><span class="dot" style="background:var(--amarillo)"></span><div class="card-nombre">Google Maps Optimizado</div><div class="card-desc">Tu negocio en Google Maps al 100%: fotos profesionales, horarios actualizados y textos que hacen que te elijan a ti antes que al de al lado.</div><a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20el%20Google%20Business%20Setup" class="card-wa" target="_blank">Pedir por WhatsApp →</a></div>
+    </div>
+    <div class="tab" id="tab-pantallas">
+      <div class="card" data-c="b"><span class="dot" style="background:var(--azul)"></span><div class="card-nombre">Menú Digital en Pantalla</div><div class="card-desc">Tu carta en una pantalla dentro del local. La actualizas desde el móvil en 30 segundos. Olvídate de imprimir para siempre.</div><a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20el%20Menú%20Digital%20en%20Pantalla" class="card-wa" target="_blank">Pedir por WhatsApp →</a></div>
+      <div class="card" data-c="b"><span class="dot" style="background:var(--azul)"></span><div class="card-nombre">Pantalla de Ofertas</div><div class="card-desc">El plato del día, la oferta de la tarde o la promoción del finde. Se muestra sola en pantalla. Los clientes lo ven, les entra el gusanillo y lo piden.</div><a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20la%20Pantalla%20de%20Promociones" class="card-wa" target="_blank">Pedir por WhatsApp →</a></div>
+      <div class="card" data-c="b"><span class="dot" style="background:var(--azul)"></span><div class="card-nombre">Cartelería Digital Interior</div><div class="card-desc">Horarios, bienvenidas, instrucciones o lo que necesites mostrar en tu local. Una pantalla que se gestiona desde donde estés.</div><a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20Señalética%20Digital%20Interior" class="card-wa" target="_blank">Pedir por WhatsApp →</a></div>
+      <div class="card" data-c="r"><span class="dot" style="background:var(--rojo)"></span><div class="card-nombre">Pantalla para Eventos</div><div class="card-desc">Para conferencias, ferias y presentaciones. Agenda, ponentes y novedades en tiempo real. Sin complicaciones técnicas ni cables raros.</div><a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20la%20Pantalla%20para%20Eventos" class="card-wa" target="_blank">Pedir por WhatsApp →</a></div>
+    </div>
+    <div class="tab" id="tab-fidelizacion">
+      <div class="card" data-c="g"><span class="dot" style="background:var(--verde)"></span><div class="card-nombre">Tarjetas de Sellos</div><div class="card-desc">100 tarjetas con tu logo. El cliente va sumando sellos y cuando las llena, vuelve a buscar su premio. Siempre ha funcionado. Siempre funcionará.</div><a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20el%20Kit%20Fidelización%20Físico" class="card-wa" target="_blank">Pedir por WhatsApp →</a></div>
+      <div class="card" data-c="g"><span class="dot" style="background:var(--verde)"></span><div class="card-nombre">Puntos en el Móvil</div><div class="card-desc">El cliente acumula puntos con cada compra. Cuando llega al objetivo, le salta un WhatsApp con su regalo. Completamente automático.</div><a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20la%20Fidelización%20Digital" class="card-wa" target="_blank">Pedir por WhatsApp →</a></div>
+      <div class="card" data-c="g"><span class="dot" style="background:var(--verde)"></span><div class="card-nombre">Fidelización Completa</div><div class="card-desc">Tarjeta física + puntos digitales + WhatsApp automático + panel de control. El sistema completo para que tus clientes vuelvan solos.</div><a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20la%20Fidelización%20Completa" class="card-wa" target="_blank">Pedir por WhatsApp →</a></div>
+    </div>
+    <div class="tab" id="tab-contacto">
+      <div class="card" data-c="r"><span class="dot" style="background:var(--rojo)"></span><div class="card-nombre">Tarjeta de Contacto Pro</div><div class="card-desc">El cliente toca tu tarjeta con el móvil y en un segundo guarda tu WhatsApp, web, Instagram y todo lo tuyo. Adiós a las tarjetas de papel.</div><a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20la%20Business%20Card%20Pro" class="card-wa" target="_blank">Pedir por WhatsApp →</a></div>
+      <div class="card" data-c="r"><span class="dot" style="background:var(--rojo)"></span><div class="card-nombre">Badge para Eventos</div><div class="card-desc">Para conferencias y ferias. Los asistentes se intercambian contacto de un toque. Sin papel, sin escribir a mano, sin perder a nadie.</div><a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20Badges%20NFC%20para%20evento" class="card-wa" target="_blank">Consultar por WhatsApp →</a></div>
+      <div class="card" data-c="b"><span class="dot" style="background:var(--azul)"></span><div class="card-nombre">NFC + Tu Página Web</div><div class="card-desc">Tarjeta NFC más una página con tu oferta y botón de WhatsApp directo. El cliente toca y ya puede contactarte. Todo listo en 48h.</div><a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20NFC%20más%20Landing" class="card-wa" target="_blank">Pedir por WhatsApp →</a></div>
+      <div class="card" data-c="r"><span class="dot" style="background:var(--rojo)"></span><div class="card-nombre">NFC para Inmobiliarias</div><div class="card-desc">Una placa en la puerta del piso. El interesado la toca y ve fotos, precio y el teléfono del agente. Directo. Sin llamadas innecesarias.</div><a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20NFC%20para%20inmobiliaria" class="card-wa" target="_blank">Consultar por WhatsApp →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- BAND AZUL -->
+<div class="band rv" style="background:var(--azul)">
+  <div class="band-in">
+    <div><div class="band-t">Del local físico al impacto digital.</div><div class="band-s">En 72 horas tienes todo montado y funcionando.</div></div>
+    <a href="#packs" class="btn-b">Ver packs →</a>
+  </div>
+</div>
+
+<!-- PACKS -->
+<section id="packs" class="rv">
+  <div class="max">
+    <div class="s-tag">Packs ahorro</div>
+    <div class="s-title">Más por menos.</div>
+    <div class="packs">
+      <div class="pack">
+        <div class="pack-barra" style="background:var(--amarillo)"></div>
+        <div class="pack-tag">Para empezar</div>
+        <div class="pack-nombre">Pack Reseñas</div>
+        <div class="pack-desc">Para el negocio que quiere empezar a conseguir reseñas sin complicarse la vida. Funciona desde el primer día.</div>
+        <div class="pack-items">
+          <div class="pack-item"><span style="background:var(--amarillo);border-radius:50%;display:inline-block;width:5px;height:5px;flex-shrink:0;"></span>Tarjeta NFC Reseñas</div>
+          <div class="pack-item"><span style="background:var(--amarillo);border-radius:50%;display:inline-block;width:5px;height:5px;flex-shrink:0;"></span>Google Maps Optimizado</div>
+          <div class="pack-item"><span style="background:var(--amarillo);border-radius:50%;display:inline-block;width:5px;height:5px;flex-shrink:0;"></span>Sticker escaparate ×3</div>
+        </div>
+        <a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20el%20Pack%20Reseñas" class="btn-wa" style="font-size:.72rem;" target="_blank">Quiero este pack →</a>
+      </div>
+      <div class="pack" style="border-top:2px solid var(--azul)">
+        <div class="pack-barra" style="background:var(--azul)"></div>
+        <div class="pack-badge" style="background:var(--azul);color:#fff">Más popular</div>
+        <div class="pack-tag">Para restaurantes y bares</div>
+        <div class="pack-nombre">Pack Restaurante</div>
+        <div class="pack-desc">Todo lo que necesita tu local para estar al día. Listo en un fin de semana, sin que tengas que hacer nada técnico.</div>
+        <div class="pack-items">
+          <div class="pack-item"><span style="background:var(--azul);border-radius:50%;display:inline-block;width:5px;height:5px;flex-shrink:0;"></span>Placa NFC para Mesas ×5</div>
+          <div class="pack-item"><span style="background:var(--azul);border-radius:50%;display:inline-block;width:5px;height:5px;flex-shrink:0;"></span>Carta digital con QR</div>
+          <div class="pack-item"><span style="background:var(--azul);border-radius:50%;display:inline-block;width:5px;height:5px;flex-shrink:0;"></span>Google Maps Optimizado</div>
+          <div class="pack-item"><span style="background:var(--azul);border-radius:50%;display:inline-block;width:5px;height:5px;flex-shrink:0;"></span>100 tarjetas de sellos</div>
+        </div>
+        <a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20el%20Pack%20Restaurante" class="btn-wa" style="font-size:.72rem;" target="_blank">Quiero este pack →</a>
+      </div>
+      <div class="pack">
+        <div class="pack-barra" style="background:var(--rojo)"></div>
+        <div class="pack-tag">Para eventos</div>
+        <div class="pack-nombre">Pack Evento</div>
+        <div class="pack-desc">Para tu próxima conferencia o feria. Tus asistentes se van con contactos reales en el móvil. Sin tarjetas de papel, sin perder a nadie.</div>
+        <div class="pack-items">
+          <div class="pack-item"><span style="background:var(--rojo);border-radius:50%;display:inline-block;width:5px;height:5px;flex-shrink:0;"></span>Tarjetas NFC para asistentes</div>
+          <div class="pack-item"><span style="background:var(--rojo);border-radius:50%;display:inline-block;width:5px;height:5px;flex-shrink:0;"></span>Pantalla de bienvenida y agenda</div>
+          <div class="pack-item"><span style="background:var(--rojo);border-radius:50%;display:inline-block;width:5px;height:5px;flex-shrink:0;"></span>Diseño de marca del evento</div>
+        </div>
+        <a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20el%20Pack%20Evento" class="btn-wa" style="font-size:.72rem;" target="_blank">Quiero este pack →</a>
+      </div>
+      <div class="pack">
+        <div class="pack-barra" style="background:var(--verde)"></div>
+        <div class="pack-tag">Para profesionales</div>
+        <div class="pack-nombre">Pack Pro</div>
+        <div class="pack-desc">Para el profesional que quiere hacer networking de verdad. Un toque y el contacto queda guardado para siempre.</div>
+        <div class="pack-items">
+          <div class="pack-item"><span style="background:var(--verde);border-radius:50%;display:inline-block;width:5px;height:5px;flex-shrink:0;"></span>Tarjeta de Contacto Pro</div>
+          <div class="pack-item"><span style="background:var(--verde);border-radius:50%;display:inline-block;width:5px;height:5px;flex-shrink:0;"></span>Tu página web express</div>
+          <div class="pack-item"><span style="background:var(--verde);border-radius:50%;display:inline-block;width:5px;height:5px;flex-shrink:0;"></span>Link en bio optimizado</div>
+        </div>
+        <a href="https://wa.me/34600000000?text=¡Hola!%20Quiero%20el%20Pack%20Pro" class="btn-wa" style="font-size:.72rem;" target="_blank">Quiero este pack →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CÓMO FUNCIONA -->
+<section id="como" class="rv" style="background:var(--negro2)">
+  <div class="max">
+    <div style="margin-bottom:4rem"><div class="s-tag">El proceso</div><div class="s-title">Tan fácil como 1, 2, 3.</div></div>
+    <div class="pasos">
+      <div class="paso"><div class="paso-n">01</div><div class="paso-titulo">Eliges lo que necesitas</div><div class="paso-desc">Miras los productos y eliges el que le va a tu negocio. Sin pagar cosas que no vas a usar nunca.</div></div>
+      <div class="paso"><div class="paso-n">02</div><div class="paso-titulo">Nos escribes por WhatsApp</div><div class="paso-desc">Nos mandas tu logo y el link de tu Google. En menos de 10 minutos está todo. Nosotros nos encargamos del resto.</div></div>
+      <div class="paso"><div class="paso-n">03</div><div class="paso-titulo">Lo montamos nosotros</div><div class="paso-desc">Diseñamos, programamos y te lo preparamos. En unos días está todo listo. Te mantenemos informado por WhatsApp en cada paso.</div></div>
+      <div class="paso"><div class="paso-n">04</div><div class="paso-titulo">Tu negocio da otro paso</div><div class="paso-desc">Tus clientes viven una experiencia más moderna, más cómoda. La tecnología trabaja mientras tú atiendes tu negocio.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- OPINIONES -->
+<section id="opiniones" class="rv">
+  <div class="max">
+    <div class="s-tag">Opiniones reales</div>
+    <div class="s-title">Lo que dicen en Google.</div>
+    
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:14px;margin-top:2.5rem;">
+      <div style="background:#1e1e1e;border:1px solid #2a2a2a;border-radius:12px;padding:20px 22px;transition:background .2s;" onmouseover="this.style.background='#242424'" onmouseout="this.style.background='#1e1e1e'">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:#FBBC05;display:flex;align-items:center;justify-content:center;font-family:Montserrat,sans-serif;font-size:14px;font-weight:700;color:#1a1000;flex-shrink:0;">MR</div>
+        <div style="flex:1;">
+          <div style="font-family:Montserrat,sans-serif;font-size:.82rem;font-weight:700;color:#F8F9FA;margin-bottom:1px;">Miguel Rodríguez</div>
+          <div style="font-size:.72rem;color:#5A5A5A;">Bar El Rincón · Barcelona</div>
+        </div>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </div>
+      <div style="display:flex;gap:2px;margin-bottom:10px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <div style="font-size:.83rem;color:#9A9A9A;line-height:1.7;font-style:italic;">"En dos semanas pasamos de 12 a 51 reseñas. Los clientes tocan la placa al pagar y ya está. Qué maravilla, tío."</div>
+    </div>
+      <div style="background:#1e1e1e;border:1px solid #2a2a2a;border-radius:12px;padding:20px 22px;transition:background .2s;" onmouseover="this.style.background='#242424'" onmouseout="this.style.background='#1e1e1e'">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:#EA4335;display:flex;align-items:center;justify-content:center;font-family:Montserrat,sans-serif;font-size:14px;font-weight:700;color:#fff;flex-shrink:0;">AL</div>
+        <div style="flex:1;">
+          <div style="font-family:Montserrat,sans-serif;font-size:.82rem;font-weight:700;color:#F8F9FA;margin-bottom:1px;">Ana López</div>
+          <div style="font-size:.72rem;color:#5A5A5A;">Organizadora · Tech Barcelona</div>
+        </div>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </div>
+      <div style="display:flex;gap:2px;margin-bottom:10px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <div style="font-size:.83rem;color:#9A9A9A;line-height:1.7;font-style:italic;">"Usamos los badges en nuestra conferencia y la gente flipó. Un toque y tenían el contacto guardado. Sin papel, sin rollos."</div>
+    </div>
+      <div style="background:#1e1e1e;border:1px solid #2a2a2a;border-radius:12px;padding:20px 22px;transition:background .2s;" onmouseover="this.style.background='#242424'" onmouseout="this.style.background='#1e1e1e'">
+      <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+        <div style="width:40px;height:40px;border-radius:50%;background:#4285F4;display:flex;align-items:center;justify-content:center;font-family:Montserrat,sans-serif;font-size:14px;font-weight:700;color:#fff;flex-shrink:0;">SC</div>
+        <div style="flex:1;">
+          <div style="font-family:Montserrat,sans-serif;font-size:.82rem;font-weight:700;color:#F8F9FA;margin-bottom:1px;">Sergio Castillo</div>
+          <div style="font-size:.72rem;color:#5A5A5A;">Consultor · Madrid</div>
+        </div>
+        <svg width="18" height="18" viewBox="0 0 24 24"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+      </div>
+      <div style="display:flex;gap:2px;margin-bottom:10px;"><svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg><svg width="14" height="14" viewBox="0 0 24 24" fill="#FBBC05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+      <div style="font-size:.83rem;color:#9A9A9A;line-height:1.7;font-style:italic;">"En mi último evento seis personas me escribieron ese mismo día. Antes repartía tarjetas que todo el mundo tiraba a la basura."</div>
+    </div>
+    </div>
+  </div>
+</section>
+
+<!-- BAND VERDE -->
+<div class="band rv" style="background:var(--verde)">
+  <div class="band-in">
+    <div><div class="band-t">¿Tienes dudas? Te respondemos ahora.</div><div class="band-s">Sin formularios raros ni esperas eternas. Escríbenos y te lo contamos todo.</div></div>
+    <a href="https://wa.me/34600000000?text=¡Hola!%20Tengo%20dudas%20sobre%20The%20Capri" class="btn-b" target="_blank">¡Venga, escríbenos! →</a>
+  </div>
+</div>
+
+<!-- CONTACTO -->
+<section id="contacto" class="rv" style="background:var(--negro2)">
+  <div class="contacto-in">
+    <div>
+      <div class="s-tag">Contacto</div>
+      <div class="s-title">Hablemos.</div>
+      <p class="s-sub" style="margin-bottom:2.5rem">Cuéntanos qué necesita tu negocio. Te respondemos el mismo día, sin rodeos.</p>
+      <div class="c-opciones">
+        <a href="https://wa.me/34600000000" class="c-opcion" target="_blank">
+          <div class="c-ico" style="background:rgba(52,168,83,.1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="var(--verde)"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg></div>
+          <div><div class="c-titulo">WhatsApp</div><div class="c-sub">La más rápida · Respondemos en minutos</div></div>
+        </a>
+        <a href="/cdn-cgi/l/email-protection#5d3532313c1d2935383e3c2d2f3473382e" class="c-opcion">
+          <div class="c-ico" style="background:rgba(66,133,244,.1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--azul)" stroke-width="1.5"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 8 10-8"/></svg></div>
+          <div><div class="c-titulo">Email</div><div class="c-sub"><span class="__cf_email__" data-cfemail="81e9eeede0c1f5e9e4e2e0f1f3e8afe4f2">[email&#160;protected]</span> · Respondemos en 24h</div></div>
+        </a>
+        <a href="https://instagram.com/thecapri" class="c-opcion" target="_blank">
+          <div class="c-ico" style="background:rgba(234,67,53,.1)"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--rojo)" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="var(--rojo)"/></svg></div>
+          <div><div class="c-titulo">Instagram</div><div class="c-sub">@thecapri · Síguenos</div></div>
+        </a>
+      </div>
+    </div>
+    <div class="c-form">
+      <div class="s-tag" style="margin-bottom:1.5rem">Cuéntanos tu caso</div>
+      <form onsubmit="enviar(event)">
+        <div class="f-group"><label class="f-label">Tu nombre</label><input type="text" class="f-input" placeholder="Ana García" required></div>
+        <div class="f-group"><label class="f-label">Tu negocio</label><input type="text" class="f-input" placeholder="Bar El Rincón" required></div>
+        <div class="f-group"><label class="f-label">¿Qué te interesa?</label>
+          <select class="f-input" style="appearance:none;background-image:url('data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%2212%22 height=%2212%22 viewBox=%220 0 12 12%22%3E%3Cpath fill=%22%239A9A9A%22 d=%22M6 8L1 3h10z%22/%3E%3C/svg%3E');background-repeat:no-repeat;background-position:right 1rem center">
+            <option>Tarjetas NFC Reseñas</option>
+            <option>Pantallas digitales</option>
+            <option>Sistema de fidelización</option>
+            <option>Pack Restaurante</option>
+            <option>Pack Evento</option>
+            <option>No lo sé aún, quiero info</option>
+          </select>
+        </div>
+        <div class="f-group"><label class="f-label">Tu WhatsApp o email</label><input type="text" class="f-input" placeholder="+34 600 000 000" required></div>
+        <button type="submit" class="btn-p" style="width:100%;padding:1rem;font-size:.78rem;" id="enviarBtn">Enviar →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="foot-in">
+    <div class="foot-logos">
+      <a href="https://www.urano-mkt.com/" target="_blank"><img src="urano_logo.png" alt="Urano MKT"></a>
+      <div class="divider"></div>
+      <img src="capri_logo.png" alt="The Capri">
+    </div>
+    <div class="foot-copy">© 2026 THE CAPRI · Barcelona</div>
+    <div class="foot-links">
+      <a href="#productos">Productos</a>
+      <a href="#como">Cómo funciona</a>
+      <a href="#contacto">Contacto</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+window.addEventListener('scroll',function(){document.getElementById('nav').classList.toggle('scrolled',window.scrollY>60);});
+function cambiaTab(t,btn){
+  document.querySelectorAll('.tab-btn').forEach(function(b){b.classList.remove('active');});
+  document.querySelectorAll('.tab').forEach(function(p){p.classList.remove('active');});
+  btn.classList.add('active');
+  document.getElementById('tab-'+t).classList.add('active');
+}
+var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('on');});},{threshold:.07});
+document.querySelectorAll('.rv').forEach(function(el){io.observe(
