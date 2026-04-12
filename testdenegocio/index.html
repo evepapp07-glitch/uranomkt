@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test gratuito · Urano mkt</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--fucsia:#AF0061;--negro:#0D0D0D;--negro2:#141414;--negro3:#1C1C1C;--gris:#2A2A2A;--gris2:#3A3A3A;--texto:#E8E8E8;--texto2:#9A9A9A;--texto3:#5A5A5A;--blanco:#F8F9FA}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{background:var(--negro);color:var(--texto);font-family:'Poppins',sans-serif;font-weight:300;line-height:1.7;overflow-x:hidden;min-height:100vh}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");pointer-events:none;z-index:0;opacity:.4}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:1.25rem 4rem;display:flex;align-items:center;justify-content:space-between;background:rgba(13,13,13,.88);backdrop-filter:blur(16px);border-bottom:1px solid rgba(255,255,255,.04)}
+nav.scrolled{background:rgba(13,13,13,.97)}
+.nav-links{display:flex;gap:2.5rem}
+.nav-links a{font-size:.8rem;letter-spacing:.1em;text-transform:uppercase;color:var(--texto2);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--fucsia)}
+.nav-cta{font-family:'Montserrat',sans-serif;font-size:.75rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--fucsia);border:1px solid var(--fucsia);padding:.5rem 1.25rem;text-decoration:none;transition:all .2s;display:inline-flex;align-items:center;gap:.5rem}
+.nav-cta:hover{background:var(--fucsia);color:#fff}
+.page-wrap{position:relative;z-index:1;max-width:720px;margin:0 auto;padding:7rem 2rem 6rem}
+/* REGISTRO */
+#register-section{animation:fadeUp .6s ease forwards}
+.reg-card{background:var(--negro2);border:1px solid var(--gris);padding:3rem 2.5rem;position:relative}
+.reg-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--fucsia)}
+.reg-header{text-align:center;margin-bottom:2.5rem}
+.section-tag{font-size:.7rem;letter-spacing:.3em;text-transform:uppercase;color:var(--fucsia);margin-bottom:1rem}
+.reg-header h1{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(1.8rem,4vw,3rem);line-height:1.05;letter-spacing:-.02em;color:var(--blanco);margin-bottom:.75rem}
+.reg-header h1 em{font-style:normal;color:var(--fucsia)}
+.reg-header p{font-size:.9rem;color:var(--texto2);max-width:460px;margin:0 auto;line-height:1.75}
+.reg-form{display:flex;flex-direction:column;gap:.85rem;margin-top:2rem}
+.form-row-2{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+.input-wrap{position:relative}
+.input-icon{position:absolute;left:1rem;top:50%;transform:translateY(-50%);color:var(--texto3);font-size:.85rem;pointer-events:none}
+.form-input{background:var(--negro);border:1px solid var(--gris2);color:var(--texto);font-family:'Poppins',sans-serif;font-weight:300;font-size:.88rem;padding:.9rem 1.1rem;outline:none;transition:border-color .2s;width:100%}
+.form-input.with-icon{padding-left:2.5rem}
+.form-input::placeholder{color:var(--texto3)}
+.form-input:focus{border-color:var(--fucsia)}
+.form-input.error{border-color:#ff4444}
+.field-error{font-size:.72rem;color:#ff4444;margin-top:.2rem;display:none}
+.reg-note{text-align:center;font-size:.72rem;color:var(--texto3);margin-top:.5rem}
+/* PROGRESS */
+.progress-sticky{position:sticky;top:72px;z-index:50;background:rgba(13,13,13,.94);backdrop-filter:blur(12px);padding:.85rem 0 1rem;margin-bottom:2rem;border-bottom:1px solid rgba(255,255,255,.04)}
+.progress-row{display:flex;justify-content:space-between;align-items:center;margin-bottom:.6rem;font-size:.72rem}
+.p-label{color:var(--texto3);letter-spacing:.05em;text-transform:uppercase}
+.p-score{font-family:'Montserrat',sans-serif;font-weight:700;color:var(--fucsia)}
+.progress-track{height:2px;background:var(--gris);overflow:hidden}
+.progress-fill{height:100%;background:var(--fucsia);transition:width .4s ease;width:0%}
+/* PREGUNTAS */
+.q-block{margin-bottom:1rem}
+.q-card{background:var(--negro2);border:1px solid var(--gris);padding:1.75rem 2rem;transition:border-color .2s}
+.q-card.answered{border-color:rgba(175,0,97,.35);background:rgba(175,0,97,.03)}
+.q-num{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--texto3);margin-bottom:.5rem;font-family:'Montserrat',sans-serif;font-weight:700}
+.q-text{font-size:.95rem;color:var(--blanco);margin-bottom:1.25rem;line-height:1.5;font-weight:400;font-family:'Montserrat',sans-serif}
+.q-options{display:flex;flex-direction:column;gap:.5rem}
+.q-opt{display:flex;align-items:flex-start;gap:.75rem;padding:.75rem 1rem;border:1px solid var(--gris2);background:transparent;cursor:pointer;transition:all .15s;text-align:left;width:100%}
+.q-opt:hover{border-color:rgba(175,0,97,.45);background:rgba(175,0,97,.04)}
+.q-opt.selected{border-color:var(--fucsia);background:rgba(175,0,97,.08)}
+.q-opt-letter{font-family:'Montserrat',sans-serif;font-weight:700;font-size:.7rem;color:var(--texto3);flex-shrink:0;margin-top:1px;min-width:16px}
+.q-opt.selected .q-opt-letter{color:var(--fucsia)}
+.q-opt-text{font-size:.83rem;color:var(--texto2);line-height:1.55}
+.q-opt.selected .q-opt-text{color:var(--texto)}
+/* SUBMIT */
+.submit-wrap{text-align:center;margin-top:2.5rem;padding-top:2rem;border-top:1px solid var(--gris)}
+.btn-primary{font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;background:var(--fucsia);color:#fff;border:none;padding:.9rem 2.5rem;cursor:pointer;transition:all .2s;display:inline-block;text-decoration:none}
+.btn-primary:hover:not(:disabled){background:#d4007a;transform:translateY(-2px)}
+.btn-primary:disabled{opacity:.3;cursor:not-allowed;transform:none}
+.submit-note{margin-top:.75rem;font-size:.72rem;color:var(--texto3);text-transform:uppercase;letter-spacing:.05em}
+/* RESULTADO */
+#result-section{display:none;animation:fadeUp .6s ease forwards}
+.result-hero{text-align:center;padding:3rem 2rem;background:var(--negro2);border:1px solid var(--gris);position:relative;margin-bottom:1.5px}
+.result-hero::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--fucsia)}
+.result-eyebrow{font-size:.68rem;letter-spacing:.3em;text-transform:uppercase;color:var(--fucsia);margin-bottom:.75rem}
+.result-name{font-size:.9rem;color:var(--texto3);margin-bottom:.25rem}
+.result-plan{font-family:'Montserrat',sans-serif;font-weight:900;font-size:clamp(2rem,6vw,3.5rem);line-height:1.05;letter-spacing:-.02em;color:var(--blanco);margin-bottom:.5rem}
+.result-plan em{font-style:normal;color:var(--fucsia)}
+.result-tagline{font-size:.9rem;color:var(--texto2);max-width:420px;margin:0 auto 1.5rem;line-height:1.7}
+.diag-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--gris);margin-bottom:1.5px}
+.diag-cell{background:var(--negro2);padding:1.5rem 1.75rem}
+.diag-cat{font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--texto3);margin-bottom:.75rem}
+.diag-bar-track{height:3px;background:var(--gris2);overflow:hidden;margin-bottom:.5rem}
+.diag-bar-fill{height:100%;background:var(--fucsia);width:0%;transition:width 1s ease}
+.diag-val{font-family:'Montserrat',sans-serif;font-size:.78rem;font-weight:700;color:var(--texto2)}
+.diagnosis-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--gris);margin-bottom:1.5px}
+.diag-card{background:var(--negro2);padding:1.75rem}
+.diag-label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fucsia);margin-bottom:.6rem;font-family:'Montserrat',sans-serif;font-weight:700}
+.diag-text{font-size:.85rem;color:var(--texto2);line-height:1.7}
+.why-section{background:rgba(175,0,97,.06);border:1px solid rgba(175,0,97,.2);padding:1.5rem 1.75rem;margin-bottom:1.5px}
+.why-label{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fucsia);margin-bottom:.75rem;font-family:'Montserrat',sans-serif;font-weight:700}
+.why-item{font-size:.83rem;color:var(--texto2);line-height:1.6;display:flex;gap:.6rem;padding:.35rem 0}
+.why-item::before{content:'✓';color:var(--fucsia);font-weight:700;flex-shrink:0}
+.plan-rec{background:var(--negro2);border-top:2px solid var(--fucsia);padding:2.5rem 2rem;position:relative;margin-bottom:1.5px}
+.plan-rec-badge{position:absolute;top:-1px;right:2rem;background:var(--fucsia);color:#fff;font-family:'Montserrat',sans-serif;font-size:.65rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:.3rem .9rem}
+.plan-rec-eyebrow{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--fucsia);margin-bottom:.4rem;font-family:'Montserrat',sans-serif;font-weight:700}
+.plan-rec-nombre{font-family:'Montserrat',sans-serif;font-weight:800;font-size:1.6rem;color:var(--blanco);margin-bottom:.5rem;letter-spacing:-.01em}
+.plan-rec-desc{font-size:.85rem;color:var(--texto2);margin-bottom:1.75rem;line-height:1.65}
+.plan-rec-item{display:flex;gap:.75rem;align-items:flex-start;font-size:.82rem;color:var(--texto2);line-height:1.5;padding:.4rem 0;border-bottom:1px solid var(--gris)}
+.plan-rec-item:last-child{border-bottom:none}
+.plan-rec-dot{width:4px;height:4px;border-radius:50%;background:var(--fucsia);margin-top:8px;flex-shrink:0}
+.result-actions{display:flex;gap:1rem;flex-wrap:wrap;padding:2rem;background:var(--negro2);border:1px solid var(--gris)}
+.btn-ghost{font-family:'Montserrat',sans-serif;font-size:.8rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;background:transparent;color:var(--texto2);border:1px solid var(--gris2);padding:.9rem 2rem;cursor:pointer;text-decoration:none;transition:all .2s;display:inline-block}
+.btn-ghost:hover{border-color:var(--fucsia);color:var(--fucsia)}
+.result-retry{background:transparent;border:none;color:var(--texto3);font-size:.75rem;font-family:'Montserrat',sans-serif;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;margin-top:1.5rem;display:block;text-align:center;transition:color .2s}
+.result-retry:hover{color:var(--fucsia)}
+footer{background:var(--negro2);border-top:1px solid var(--gris);padding:2rem 4rem;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+.footer-logo{font-family:'Montserrat',sans-serif;font-weight:700;letter-spacing:.15em;color:var(--blanco)}
+.footer-logo span{color:var(--fucsia)}
+.footer-copy{font-size:.78rem;color:var(--texto3)}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:.78rem;color:var(--texto3);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--fucsia)}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:700px){
+  nav{padding:1rem 1.5rem}.nav-links{display:none}.page-wrap{padding:6rem 1.25rem 4rem}
+  .form-row-2{grid-template-columns:1fr}.diag-grid,.diagnosis-grid{grid-template-columns:1fr}
+  .result-actions{flex-direction:column}footer{flex-direction:column;gap:1rem;text-align:center;padding:2rem 1.5rem}
+}
+</style>
+</head>
+<body>
+
+<nav id="mainNav">
+  <a href="index.html" style="display:flex;align-items:center;text-decoration:none;">
+    <img src="URANO_LOGO_svg.svg" alt="Urano mkt" style="height:44px;width:auto;">
+  </a>
+  <div class="nav-links">
+    <a href="index.html#nosotros">Nosotros</a>
+    <a href="index.html#planes">Planes</a>
+    <a href="index.html#contacto">Contacto</a>
+  </div>
+  <a href="https://wa.me/34672584373?text=Hola%2C%20me%20interesa%20saber%20m%C3%A1s%20sobre%20Urano%20mkt" target="_blank" class="nav-cta">
+    <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.855L.054 23.447a.5.5 0 0 0 .617.606l5.807-1.524A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.955 9.955 0 0 1-5.127-1.415l-.367-.218-3.804.998 1.015-3.698-.24-.382A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+    Hablemos
+  </a>
+</nav>
+
+<div class="page-wrap">
+
+  <!-- REGISTRO -->
+  <div id="register-section">
+    <div class="reg-card">
+      <div class="reg-header">
+        <div class="section-tag">Test gratuito · Urano mkt</div>
+        <h1>¿Tu negocio está<br>listo para <em>crecer?</em></h1>
+        <p>8 preguntas que revelan el estado real de tu presencia digital — y el plan exacto para avanzar.</p>
+      </div>
+      <div class="reg-form">
+        <div class="form-row-2">
+          <div>
+            <div class="input-wrap"><span class="input-icon">👤</span><input type="text" class="form-input with-icon" id="reg-nombre" placeholder="Tu nombre"></div>
+            <div class="field-error" id="err-nombre">Ingresá tu nombre.</div>
+          </div>
+          <div>
+            <div class="input-wrap"><span class="input-icon">🏢</span><input type="text" class="form-input with-icon" id="reg-negocio" placeholder="Nombre de tu negocio"></div>
+            <div class="field-error" id="err-negocio">Ingresá el nombre de tu negocio.</div>
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div>
+            <div class="input-wrap"><span class="input-icon">📧</span><input type="email" class="form-input with-icon" id="reg-email" placeholder="Tu email"></div>
+            <div class="field-error" id="err-email">Email inválido.</div>
+          </div>
+          <div>
+            <div class="input-wrap"><span class="input-icon">📱</span><input type="tel" class="form-input with-icon" id="reg-movil" placeholder="WhatsApp / Móvil"></div>
+            <div class="field-error" id="err-movil">Ingresá tu móvil.</div>
+          </div>
+        </div>
+        <div class="input-wrap"><span class="input-icon">@</span><input type="text" class="form-input with-icon" id="reg-instagram" placeholder="@tuinstagram (opcional)"></div>
+        <button class="btn-primary" style="margin-top:.5rem;text-align:center;width:100%" onclick="startTest()">Comenzar el test →</button>
+        <div class="reg-note">🔒 Tus datos son privados. Sin spam.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TEST -->
+  <div id="test-section" style="display:none">
+    <div class="progress-sticky">
+      <div class="progress-row">
+        <span class="p-label" id="p-label">Pregunta 1 de 8</span>
+        <span class="p-score" id="p-score"></span>
+      </div>
+      <div class="progress-track"><div class="progress-fill" id="p-fill"></div></div>
+    </div>
+
+    <div class="q-block"><div class="q-card" id="qc-0">
+      <div class="q-num">01 / 08</div>
+      <div class="q-text">¿Cómo conseguís la mayoría de tus clientes nuevos hoy?</div>
+      <div class="q-options" data-q="0">
+        <button class="q-opt" data-val="1"><span class="q-opt-letter">A</span><span class="q-opt-text">Boca a boca — no tengo control sobre cuándo o si llegan</span></button>
+        <button class="q-opt" data-val="2"><span class="q-opt-letter">B</span><span class="q-opt-text">Redes sociales, pero sin sistema — a veces funciona, a veces no</span></button>
+        <button class="q-opt" data-val="3"><span class="q-opt-letter">C</span><span class="q-opt-text">Tengo presencia digital que me genera consultas de forma regular</span></button>
+      </div>
+    </div></div>
+
+    <div class="q-block"><div class="q-card" id="qc-1">
+      <div class="q-num">02 / 08</div>
+      <div class="q-text">¿Con qué frecuencia publicás contenido en redes?</div>
+      <div class="q-options" data-q="1">
+        <button class="q-opt" data-val="1"><span class="q-opt-letter">A</span><span class="q-opt-text">Poco o nada — no tengo tiempo o no sé qué publicar</span></button>
+        <button class="q-opt" data-val="2"><span class="q-opt-letter">B</span><span class="q-opt-text">Cuando me acuerdo — sin planificación ni objetivo claro</span></button>
+        <button class="q-opt" data-val="3"><span class="q-opt-letter">C</span><span class="q-opt-text">De forma constante, con calendario y metas definidas</span></button>
+      </div>
+    </div></div>
+
+    <div class="q-block"><div class="q-card" id="qc-2">
+      <div class="q-num">03 / 08</div>
+      <div class="q-text">¿Tenés claro quién es tu cliente ideal y qué necesita escuchar para comprarte?</div>
+      <div class="q-options" data-q="2">
+        <button class="q-opt" data-val="1"><span class="q-opt-letter">A</span><span class="q-opt-text">No, mi mensaje es bastante genérico — hablo a todo el mundo</span></button>
+        <button class="q-opt" data-val="2"><span class="q-opt-letter">B</span><span class="q-opt-text">Tengo una idea general pero no lo tengo definido con precisión</span></button>
+        <button class="q-opt" data-val="3"><span class="q-opt-letter">C</span><span class="q-opt-text">Sí, conozco bien a mi cliente y mi comunicación está alineada con eso</span></button>
+      </div>
+    </div></div>
+
+    <div class="q-block"><div class="q-card" id="qc-3">
+      <div class="q-num">04 / 08</div>
+      <div class="q-text">¿Qué pasa con tu presencia digital cuando estás ocupado con el negocio?</div>
+      <div class="q-options" data-q="3">
+        <button class="q-opt" data-val="1"><span class="q-opt-letter">A</span><span class="q-opt-text">Se apaga — si no publico yo, no hay nada</span></button>
+        <button class="q-opt" data-val="2"><span class="q-opt-letter">B</span><span class="q-opt-text">Baja mucho — intento mantenerla pero queda inconsistente</span></button>
+        <button class="q-opt" data-val="3"><span class="q-opt-letter">C</span><span class="q-opt-text">Sigue funcionando — tengo sistemas o apoyo para que no dependa de mí</span></button>
+      </div>
+    </div></div>
+
+    <div class="q-block"><div class="q-card" id="qc-4">
+      <div class="q-num">05 / 08</div>
+      <div class="q-text">¿Tu contenido en redes genera consultas o ventas de forma directa?</div>
+      <div class="q-options" data-q="4">
+        <button class="q-opt" data-val="1"><span class="q-opt-letter">A</span><span class="q-opt-text">No — publico pero no llegan mensajes ni clientes por ese canal</span></button>
+        <button class="q-opt" data-val="2"><span class="q-opt-letter">B</span><span class="q-opt-text">Alguna vez sí, pero no es algo que pueda predecir ni repetir</span></button>
+        <button class="q-opt" data-val="3"><span class="q-opt-letter">C</span><span class="q-opt-text">Sí, regularmente — mis redes son una fuente real de clientes</span></button>
+      </div>
+    </div></div>
+
+    <div class="q-block"><div class="q-card" id="qc-5">
+      <div class="q-num">06 / 08</div>
+      <div class="q-text">¿Cuánto tiempo dedicás vos al marketing de tu negocio por semana?</div>
+      <div class="q-options" data-q="5">
+        <button class="q-opt" data-val="1"><span class="q-opt-letter">A</span><span class="q-opt-text">Muy poco o nada — el negocio me absorbe todo el tiempo</span></button>
+        <button class="q-opt" data-val="2"><span class="q-opt-letter">B</span><span class="q-opt-text">Algunas horas, pero sin saber bien si están funcionando</span></button>
+        <button class="q-opt" data-val="3"><span class="q-opt-letter">C</span><span class="q-opt-text">Tengo tiempo definido y lo uso con estrategia — o alguien me ayuda</span></button>
+      </div>
+    </div></div>
+
+    <div class="q-block"><div class="q-card" id="qc-6">
+      <div class="q-num">07 / 08</div>
+      <div class="q-text">¿Sabés qué resultados concretos te da tu presencia digital hoy?</div>
+      <div class="q-options" data-q="6">
+        <button class="q-opt" data-val="1"><span class="q-opt-letter">A</span><span class="q-opt-text">No miro métricas — no sé si lo que hago funciona o no</span></button>
+        <button class="q-opt" data-val="2"><span class="q-opt-letter">B</span><span class="q-opt-text">Miro likes y seguidores, pero no sé si se convierten en negocio real</span></button>
+        <button class="q-opt" data-val="3"><span class="q-opt-letter">C</span><span class="q-opt-text">Sigo métricas concretas y las uso para tomar decisiones</span></button>
+      </div>
+    </div></div>
+
+    <div class="q-block"><div class="q-card" id="qc-7">
+      <div class="q-num">08 / 08</div>
+      <div class="q-text">¿Cuál describe mejor tu objetivo principal ahora mismo?</div>
+      <div class="q-options" data-q="7">
+        <button class="q-opt" data-val="1"><span class="q-opt-letter">A</span><span class="q-opt-text">Empezar — quiero tener una presencia digital real y profesional</span></button>
+        <button class="q-opt" data-val="2"><span class="q-opt-letter">B</span><span class="q-opt-text">Convertir — ya existo en redes pero quiero que eso me genere clientes</span></button>
+        <button class="q-opt" data-val="3"><span class="q-opt-letter">C</span><span class="q-opt-text">Escalar — tengo todo funcionando y quiero acelerar con más potencia</span></button>
+      </div>
+    </div></div>
+
+    <div class="submit-wrap">
+      <button class="btn-primary" id="submit-btn" disabled onclick="showResult()">Ver mi diagnóstico →</button>
+      <div class="submit-note" id="submit-note">Respondé las 8 preguntas para continuar</div>
+    </div>
+  </div>
+
+  <!-- RESULTADO -->
+  <div id="result-section">
+    <div class="result-hero">
+      <div class="result-eyebrow">Tu diagnóstico · Urano mkt</div>
+      <div class="result-name" id="r-name"></div>
+      <div class="result-plan" id="r-plan"></div>
+      <div class="result-tagline" id="r-tagline"></div>
+    </div>
+    <div class="diag-grid">
+      <div class="diag-cell"><div class="diag-cat">Visibilidad</div><div class="diag-bar-track"><div class="diag-bar-fill" id="bar-vis"></div></div><div class="diag-val" id="val-vis"></div></div>
+      <div class="diag-cell"><div class="diag-cat">Estrategia</div><div class="diag-bar-track"><div class="diag-bar-fill" id="bar-est"></div></div><div class="diag-val" id="val-est"></div></div>
+      <div class="diag-cell"><div class="diag-cat">Conversión</div><div class="diag-bar-track"><div class="diag-bar-fill" id="bar-conv"></div></div><div class="diag-val" id="val-conv"></div></div>
+      <div class="diag-cell"><div class="diag-cat">Autonomía</div><div class="diag-bar-track"><div class="diag-bar-fill" id="bar-aut"></div></div><div class="diag-val" id="val-aut"></div></div>
+    </div>
+    <div class="diagnosis-grid">
+      <div class="diag-card"><div class="diag-label">Tu situación real</div><div class="diag-text" id="r-situacion"></div></div>
+      <div class="diag-card"><div class="diag-label">Tu mayor freno ahora</div><div class="diag-text" id="r-freno"></div></div>
+    </div>
+    <div class="why-section">
+      <div class="why-label">Por qué este plan es para vos</div>
+      <div id="r-why"></div>
+    </div>
+    <div class="plan-rec">
+      <div class="plan-rec-badge">Recomendado para vos</div>
+      <div class="plan-rec-eyebrow" id="r-plan-nivel"></div>
+      <div class="plan-rec-nombre" id="r-plan-nombre"></div>
+      <div class="plan-rec-desc" id="r-plan-desc"></div>
+      <div id="r-plan-items" style="margin-bottom:2rem"></div>
+    </div>
+    <div class="result-actions">
+      <a id="r-wa-btn" href="#" target="_blank" class="btn-primary" style="display:inline-flex;align-items:center;gap:.6rem;text-decoration:none;">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/><path d="M12 0C5.373 0 0 5.373 0 12c0 2.127.558 4.126 1.532 5.855L.054 23.447a.5.5 0 0 0 .617.606l5.807-1.524A11.954 11.954 0 0 0 12 24c6.627 0 12-5.373 12-12S18.627 0 12 0zm0 22a9.955 9.955 0 0 1-5.127-1.415l-.367-.218-3.804.998 1.015-3.698-.24-.382A9.956 9.956 0 0 1 2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10z"/></svg>
+        Quiero empezar →
+      </a>
+      <a href="index.html#planes" class="btn-ghost" style="text-decoration:none;">Ver todos los planes</a>
+    </div>
+    <button class="result-retry" onclick="resetAll()">↩ Volver a hacer el test</button>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-logo">URANO <span>mkt</span></div>
+  <div class="footer-copy">© 2025 Urano mkt · Barcelona</div>
+  <div class="footer-links">
+    <a href="index.html#planes">Planes</a>
+    <a href="index.html#contacto">Contacto</a>
+    <a href="https://www.instagram.com/urano.mkt/" target="_blank">Instagram</a>
+  </div>
+</footer>
+
+<script>
+let lead = {};
+const answers = new Array(8).fill(null);
+
+function startTest() {
+  const n = document.getElementById('reg-nombre').value.trim();
+  const g = document.getElementById('reg-negocio').value.trim();
+  const e = document.getElementById('reg-email').value.trim();
+  const m = document.getElementById('reg-movil').value.trim();
+  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(e);
+  let ok = true;
+  [[n,'err-nombre','reg-nombre'],[g,'err-negocio','reg-negocio'],
+   [emailOk?'x':'','err-email','reg-email'],[m,'err-movil','reg-movil']]
+  .forEach(([v,eid,iid])=>{
+    const bad=!v; document.getElementById(eid).style.display=bad?'block':'none';
+    document.getElementById(iid).classList.toggle('error',bad); if(bad)ok=false;
+  });
+  if(!ok)return;
+  lead={nombre:n,negocio:g,email:e,movil:m,instagram:document.getElementById('reg-instagram').value.trim()};
+  document.getElementById('register-section').style.display='none';
+  document.getElementById('test-section').style.display='block';
+  updateProgress();
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+document.querySelectorAll('.q-options').forEach(container=>{
+  const q=parseInt(container.dataset.q);
+  container.querySelectorAll('.q-opt').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      answers[q]=parseInt(btn.dataset.val);
+      container.querySelectorAll('.q-opt').forEach(b=>b.classList.remove('selected'));
+      btn.classList.add('selected');
+      document.getElementById('qc-'+q).classList.add('answered');
+      updateProgress();
+    });
+  });
+});
+
+function updateProgress(){
+  const done=answers.filter(a=>a!==null).length;
+  document.getElementById('p-label').textContent=done<8?`Pregunta ${done+1} de 8`:'¡Todo respondido!';
+  document.getElementById('p-score').textContent=done+'/8';
+  document.getElementById('p-fill').style.width=(done/8*100)+'%';
+  document.getElementById('submit-btn').disabled=done<8;
+  if(done===8)document.getElementById('submit-note').textContent='Listo — podés ver tu diagnóstico.';
+}
+
+function showResult(){
+  const score=answers.reduce((s,v)=>s+v,0);
+  // Dimensiones: Visibilidad=Q0+Q1, Estrategia=Q2+Q6, Conversión=Q4+Q5, Autonomía=Q3+Q7
+  const vis=answers[0]+answers[1], est=answers[2]+answers[6];
+  const conv=answers[4]+answers[5], aut=answers[3]+answers[7];
+  const pct=d=>Math.round((d/6)*100);
+
+  document.getElementById('bar-vis').style.width=pct(vis)+'%';
+  document.getElementById('bar-est').style.width=pct(est)+'%';
+  document.getElementById('bar-conv').style.width=pct(conv)+'%';
+  document.getElementById('bar-aut').style.width=pct(aut)+'%';
+  document.getElementById('val-vis').textContent=pct(vis)+'%';
+  document.getElementById('val-est').textContent=pct(est)+'%';
+  document.getElementById('val-conv').textContent=pct(conv)+'%';
+  document.getElementById('val-aut').textContent=pct(aut)+'%';
+
+  document.getElementById('r-name').textContent=lead.nombre+' · '+lead.negocio;
+
+  const planes={
+    presencia:{
+      titulo:'Plan <em>Presencia</em>',
+      tagline:'Tu negocio necesita construir su base digital antes de pensar en convertir o escalar.',
+      situacion:'Tu negocio existe, pero digitalmente es casi invisible. Dependés del boca a boca y cuando eso falla, las ventas también. No tenés un sistema que trabaje por vos.',
+      freno:'La falta de presencia consistente hace que pierdas clientes antes de que te encuentren. No es un problema de producto — es un problema de visibilidad y base estratégica.',
+      why:['No tenés aún una presencia digital sólida y necesitás construir desde la base','Tu comunicación todavía no refleja el valor real de tu negocio','Necesitás estructura antes de intentar convertir o escalar','Este plan te da la base estratégica que hoy no tenés'],
+      nivel:'01 — Plan Presencia',
+      nombre:'Construye tu base.',
+      desc:'El punto de partida para marcas que quieren existir en digital con estrategia real — no improvisar.',
+      items:['Llamada inicial para conocer tu negocio en profundidad','Estrategia a medida — sin plantillas genéricas','Copies y guiones adaptados a tu voz y tu cliente ideal','Diseño de posts y stories con identidad coherente','Optimización completa de tu perfil de Instagram','Reporte mensual con métricas reales'],
+      wa:`Hola, soy ${lead.nombre} de ${lead.negocio}. Hice el test de Urano mkt y me recomendaron el Plan Presencia. Me gustaría saber más.`
+    },
+    conversion:{
+      titulo:'Plan <em>Conversión</em>',
+      tagline:'Tenés presencia, pero tus redes todavía no te generan clientes de forma predecible.',
+      situacion:'Ya estás en redes y publicás, pero de forma inconsistente y sin sistema. Tenés potencial — el problema es que ese potencial no se está convirtiendo en ventas reales todavía.',
+      freno:'Publicar sin estrategia es tiempo perdido. Tu contenido no tiene un objetivo de conversión claro y eso hace que la gente te siga pero no te compre.',
+      why:['Ya tenés algo de presencia pero no se convierte en clientes concretos','Tu comunicación necesita alinearse con un objetivo de venta claro','Necesitás consistencia y sistema — no más contenido sin dirección','Este plan activa lo que ya construiste y lo enfoca en resultados reales'],
+      nivel:'02 — Plan Conversión',
+      nombre:'Activa tu crecimiento.',
+      desc:'Para marcas que ya tienen presencia y quieren que sus redes generen clientes de verdad.',
+      items:['Todo lo del Plan Presencia incluido','Estrategia de contenido orientada a conversión','Copywriting persuasivo alineado con tu audiencia','Gestión activa de comunidad — respondemos por vos','Calendario editorial con objetivo por publicación','Seguimiento quincenal y optimización continua'],
+      wa:`Hola, soy ${lead.nombre} de ${lead.negocio}. Hice el test de Urano mkt y me recomendaron el Plan Conversión. Me gustaría saber más.`
+    },
+    escala:{
+      titulo:'Plan <em>Escala</em>',
+      tagline:'Tenés base y clientes — ahora necesitás un sistema que multiplique lo que ya funciona.',
+      situacion:'Tu negocio ya tiene presencia digital real y te genera clientes. Sabés lo que funciona. El objetivo ahora es acelerar sin que todo dependa de vos — un sistema que trabaje solo.',
+      freno:'Sin automatización y publicidad paga inteligente, tu crecimiento tiene techo. Llegaste al límite de lo que podés lograr de forma orgánica y manual.',
+      why:['Ya tenés una base sólida y resultados comprobados','El siguiente paso es multiplicar con Meta Ads y contenido avanzado','Necesitás delegar por completo para enfocarte en crecer','Este plan es para marcas que quieren dominar su categoría en Barcelona'],
+      nivel:'03 — Plan Escala',
+      nombre:'Domina tu mercado.',
+      desc:'Para marcas con base sólida que quieren acelerar con un sistema que trabaja solo.',
+      items:['Todo lo del Plan Conversión incluido','Gestión completa de Meta Ads — configuración + optimización','Presupuesto de publicidad gestionado estratégicamente','A/B testing de creatividades y audiencias','Reporte semanal de campañas y resultados','Sesión estratégica quincenal de 60 minutos'],
+      wa:`Hola, soy ${lead.nombre} de ${lead.negocio}. Hice el test de Urano mkt y me recomendaron el Plan Escala. Me gustaría saber más.`
+    }
+  };
+
+  const plan=score<=13?'presencia':score<=18?'conversion':'escala';
+  const p=planes[plan];
+
+  document.getElementById('r-plan').innerHTML=p.titulo;
+  document.getElementById('r-tagline').textContent=p.tagline;
+  document.getElementById('r-situacion').textContent=p.situacion;
+  document.getElementById('r-freno').textContent=p.freno;
+  document.getElementById('r-why').innerHTML=p.why.map(w=>`<div class="why-item">${w}</div>`).join('');
+  document.getElementById('r-plan-nivel').textContent=p.nivel;
+  document.getElementById('r-plan-nombre').textContent=p.nombre;
+  document.getElementById('r-plan-desc').textContent=p.desc;
+  document.getElementById('r-plan-items').innerHTML=p.items.map(i=>`<div class="plan-rec-item"><div class="plan-rec-dot"></div>${i}</div>`).join('');
+  document.getElementById('r-wa-btn').href=`https://wa.me/34672584373?text=${encodeURIComponent(p.wa)}`;
+
+  document.getElementById('test-section').style.display='none';
+  document.getElementById('result-section').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function resetAll(){
+  answers.fill(null); lead={};
+  document.querySelectorAll('.q-opt').forEach(b=>b.classList.remove('selected'));
+  document.querySelectorAll('.q-card').forEach(c=>c.classList.remove('answered'));
+  document.getElementById('submit-btn').disabled=true;
+  document.getElementById('submit-note').textContent='Respondé las 8 preguntas para continuar';
+  document.getElementById('p-fill').style.width='0%';
+  document.getElementById('p-label').textContent='Pregunta 1 de 8';
+  document.getElementById('p-score').textContent='';
+  ['reg-nombre','reg-negocio','reg-email','reg-movil','reg-instagram'].forEach(id=>document.getElementById(id).value='');
+  document.getElementById('register-section').style.display='block';
+  document.getElementById('test-section').style.display='none';
+  document.getElementById('result-section').style.display='none';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+window.addEventListener('scroll',()=>document.getElementById('mainNav').classList.toggle('scrolled',window.scrollY>60));
+</script>
+</body>
+</html>
